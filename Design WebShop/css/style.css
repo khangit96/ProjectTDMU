@@ -1,0 +1,250 @@
+
+/*phần top-bar*/
+.top-bar{
+	background: #F5F5F5;
+	padding: 10px;/*Top Right,Bottom,Left */
+}
+
+/*Phần link Thanh Toán,Đăng Nhập,Đăng Ký,Tài Khoản Của Bạn,Hotline*/
+p{	
+	padding: 0px 10px;
+	color: #716E6E;
+}
+.top-links{
+	margin: 6px 0px 0px;
+}
+
+.top-links li{
+	float: left;
+	font-size: 12px;
+	padding: 0px 10px;
+	border-right: 1px solid #e1e1e1;
+}
+
+.top-links li:last-child{
+	border: none;
+	padding-right: 0px;
+}
+
+.top-links li a{
+	color: #716E6E;
+}
+
+/* Phần Main-header */
+.logo{/*logo*/
+	margin-top: 20px;
+	margin-left: 60px;
+}
+
+
+.main-header .searchBox{/* searchBox*/
+	margin-top: 10px;
+	margin-right: 65px;
+}
+.main-header .searchBox input[type=text]{
+	width: 225px;
+}
+
+.main-header .searchBox button{
+	margin-right: -38px;
+}
+
+/*Phần giỏ hàng*/
+.cart-wish-w{
+	margin-top: 80px;
+	margin-right: 50px;
+	border: 1px dashed #F2532F;
+	padding: 15px;
+}
+.cart-wish-w a{
+	font-size: 18px;
+	color: #F2532F;
+
+}
+.cart-wish-w a:hover{
+	font-size: 18px;
+	color: #e1e1e1;
+	text-decoration: none;
+
+}
+.cart-wish-w a:focus{
+	font-size: 18px;
+	color: #e1e1e1;
+	text-decoration: none;
+
+}
+
+/*Phần menu-nav*/
+.main-nav{
+	position: fixed;
+	background: #1E1E21;
+	 z-index: 9999;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+	
+}
+
+.main-nav li{
+	margin: 0px;
+}
+
+.main-nav li a{
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	padding: 15px;
+	
+	border-top: 5px solid #1E1E21;
+}
+.active a{/*trang chủ được active*/
+	color: #000!important;
+	border-radius: 0px!important;
+	border-color: #F2532F!important;
+	background: #fff!important;
+}
+.main-nav li a:hover{
+	color: #000;
+	border-radius: 0px;
+	border-color: #F2532F;
+	background: #fff;
+}
+.main-nav li a:focus{
+	color: #000;
+	border-radius: 0px;
+	border-color: #F2532F;
+	background: #fff;
+}
+.main-nav li ul li a{
+	background: #fff;
+	color: #000;
+	border: none;
+	border-radius: 0px;
+	font-size: 12px;
+	font-weight: normal;
+	padding: 5px 10px;
+}
+
+/*Phần danh mục sản phẩm*/
+.categories p{
+	border: 2px solid #F2532F;
+	color: white;
+	font-size: 14px;
+	padding: 5px;
+	text-align: center;
+	background-color: #F2532F;
+}
+.categories{
+	border: 1px solid #e1e1e1;
+	margin-top: 10px;
+}
+.categories ul li{
+	margin-top: 10px;
+	
+	list-style-type: none;	
+	border-bottom: 1px solid #e1e1e1;
+	padding-bottom: 5px;
+
+}
+.categories ul li a{
+	color:  #928F8F;
+
+}
+.categories ul li a:hover{
+	text-decoration: none;
+	color: #F2532F;
+
+}
+.categories ul li a:focus{
+	text-decoration: none;
+	color: #F2532F;
+
+}
+/*Phần danh sách sản phẩm*/
+section.content{/*content*/
+	margin-top: 10px;
+}
+
+p.box-title{/* tiêu đề cho mục sản phẩm mới và sản phẩm giảm giá*/
+	text-align: left;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	border: 1px solid #e1e1e1;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+	font-size: 17px;
+	color: #928F8F;
+}
+
+.product-lists{/* danh sách sản phẩm*/
+	margin-bottom: 150px;
+}
+
+.product-item{
+	border: 1px solid #e1e1e1;
+	position: relative;
+	margin-bottom: 60px;
+}
+.product-item .image img{/* hình ảnh sản phẩm*/
+	border-bottom: 1px solid #e1e1e1;
+}
+
+.product-item:hover .image .line{
+	transition:width 2s;
+	width: 90%;
+}
+
+.product-item .title a{/* tiêu đề sản phẩm*/
+	font-size: 20px;
+	font-weight: normal;
+	color: #928F8F;
+	text-decoration: none;
+}
+
+.product-item .title a:hover{
+	color: #000;
+	text-decoration: none;
+}
+
+.product-item .info{
+	overflow: hidden;
+}
+
+.product-item .info del{
+	display: block;
+	float: left;
+	font-size: 11px;
+	margin: 0px 10px 0px 0px;
+	padding-top: 6px;
+}
+
+.product-item .info ins{
+	text-decoration: none;
+	font-size: 16px;
+	color: #F2532F;
+}
+
+.product-item .btn-cart{
+	display: block;
+	width: 33px;
+	height: 33px;
+	line-height: 33px;
+	color: #fff;
+	text-align: center;
+	border-radius: 2px;
+	background: #F2532F;
+}
+
+/*Phần footer*/
+.footer-copyright{
+	border-top: 1px solid #e1e1e1;
+	padding: 20px;
+	text-align: center;
+	margin-bottom: 10px;
+	color: #e1e1e1;
+	font-size: 11px;
+}
+
+
