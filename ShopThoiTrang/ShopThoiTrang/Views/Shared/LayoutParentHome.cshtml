@@ -1,0 +1,189 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <!--Thư viện Bootstrap-->
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!--Css-->
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+   
+    <title>KShop</title>
+</head>
+<body>
+
+    <header>
+        <!-- Phần phía trên cùng -->
+        <div class="top-bar">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="pull-left">
+                            <!-- nằm bên trái -->
+                            <p><b>Hotline:</b><u style="color:red">0976671890</u></p>
+                        </div>
+                        <div class="pull-right">
+                            <!-- nằm bên phải -->
+                            <ul class="list-unstyled  top-links">
+                                <!-- bỏ syle của list -->
+                                <li><a href="#">Tài Khoản Của Bạn</a></li>
+                                <li><a href="#">Thanh Toán</a></li>
+                                <li><a href="#">Đăng Nhập</a></li>
+                                <li><a href="#">Đăng Ký</a></li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div><!-- kết thức .top-bar -->
+        <!-- Phần header để hiện thị thông tin về website(tìm kiếm sản phẩm,thanh toán,quản lí tài khoản) -->
+        <div class="main-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- Phần hiển thị logo -->
+                    <div class="col-sm-3">
+                        <div class="logo">
+                            <!-- căn giữa logo -->
+                            <a href="#"><img src="~/Content/files/logo.png" alt="logo shop"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+
+                    </div>
+                    <!-- Phẩn hiển thị giỏ hàng -->
+                    <div class="col-sm-6">
+                        <!--Cột 3:Hiển thị giở hàng nằm bên phải -->
+                        <div class="pull-right">
+                            <div class="cart-wish-w">
+                                <!-- Giỏ hàng -->
+                                <div class="cart-w">
+                                    <span><strong><a href="#"><b style="color:red;font-size:20px">3 Sản phẩm(5)</b></a></strong></span>
+                                    <a href="#" class="btn-cart"><i class="glyphicon glyphicon-shopping-cart"></i></a><!-- Thêm Icon giỏ hàng từ boostrap -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Kết thúc cột 3 -->
+                    </div>
+                </div>
+                <!-- kết thúc .main-header -->
+                <!-- Menu Navigation bar sử dụng bootstrap  -->
+                <div class="main-nav">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <ul class="nav nav-pills">
+                                <li class="active">
+                                    <!--class active:làm nổi bật trang chủ  -->
+                                    <a href="#"><i class="glyphicon glyphicon-home"></i> Trang Chủ</a>
+                                </li>
+                                <li><a href="#">Tin Tức</a></li>
+                                <li><a href="#">Giới Thiệu</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">Liên Hệ</a></li>
+                                <!-- Phần searchBox -->
+                                <div class="col-sm-2 searchBox pull-right">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Nhập sản phẩm cần tìm kiếm">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--kết thúc .main-nav-->
+                <!-- Phần quảng cáo -->
+                <div class="advertise">
+                    <div class="container">
+                        <div class="row">
+                            <!-- Phần quảng cáo -->
+                            <div class="col-sm-12">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Phần Danh Mục Sản Phẩm và Hiển thị danh sách sản phẩm -->
+                <div class="header-left-and-righ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- Phần danh mục sản phẩm -->
+                            <div class="col-sm-2">
+                                <div class="categories">
+                                    <p>Danh Mục Sản Phẩm</p>
+                                    <ul>
+                                        <li><a href="#">> Quần Tây Nam</a></li>
+                                        <li><a href="#">> Áo Thun Nam</a></li>
+                                        <li><a href="#">> Quần Tây Nữ</a></li>
+                                        <li><a href="#">> Áo Thun Nữ</a></li>
+                                        <li><a href="#">> Quần Short</a></li>
+                                        <li><a href="#">> Váy Nữ</a></li>
+                                        <li><a href="#">> Giày Nam</a></li>
+                                        <li><a href="#">> Giày Thể Thao</a></li>
+                                        <li><a href="#">> Quần Tây Nam</a></li>
+                                        <li><a href="#">> Áo Thun Nam</a></li>
+                                        <li><a href="#">> Quần Tây Nữ</a></li>
+                                        <li><a href="#">> Áo Thun Nữ</a></li>
+                                        <li><a href="#">> Quần Short</a></li>
+                                        <li><a href="#">> Váy Nữ</a></li>
+                                        <li><a href="#">> Giày Nam</a></li>
+                                        <li><a href="#">> Giày Thể Thao</a></li>
+
+                                    </ul>
+                                </div>
+                                <!-- Phần hiển thị fanpage facebook -->
+                                <div class="fanpage">
+                                    <h1>Phần hiển thị fanpage faceboook</h1>
+                                </div>
+                            </div>
+                            <!-- Kết thúc cột 1:danh mục sản phẩm -->
+
+                            <!-- Phần hiển thị nội dung các trang con -->
+                            <div class="col-sm-8">
+                                @RenderBody()
+                            </div>
+                            <div class="col-sm-2">
+                                <h1>Phần nhảm nhí</h1>
+                            </div>
+                            <!-- Kết thúc .col-sm-10-->
+                        </div>
+                    </div>
+                </div>
+    </header>
+    <!-- Kết thúc header -->
+    <!-- Phần footer -->
+    <footer class="footer">
+        <div class="footer-custom">
+            <div class="container-fluid">
+                <div class="footer-copyright">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>&copy; 2016 |Thiết Kế Và Phát Triển Bởi KCOMPANY</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Địa chỉ:Ấp 3,Xã Bình Hoà Nam,Huyện Đức Huệ,Tỉnh Long An</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p>Liên hệ tư vấn :Ms.Hoa 0976671809</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </footer>
+    <!--Kết thúc .footer-->
+</body>
+</html>

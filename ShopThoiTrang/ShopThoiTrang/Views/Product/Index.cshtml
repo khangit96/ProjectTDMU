@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var productList = ViewBag.productList;
+  
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản Lý Sản Phẩm</title>
+</head>
+<body>
+   <h1 style="text-align:center">Danh Sách Sản Phẩm</h1>
+    <p>
+        <a href="/admin/quan-ly-product/them-moi/">Thêm mới</a>
+    </p>
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Tên
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Ảnh đại diện
+            </th>
+            <th>
+                Bộ sưu tập
+            </th>
+            <th>
+                Mô tả chi tiết
+            </th>
+            <th>
+                Sản phẩm mới
+            </th>
+            <th>
+                Sản phẩm giảm giá
+            </th>
+            <th>
+                Giá giảm
+            </th>
+            <th>
+                Tuỳ chọn
+            </th>
+        </tr>
+
+        @foreach (var product in productList)
+        {
+            var db = new ShopThoiTrang.Models.DBShop();
+            var parentName = db.ProductCategories.Find(product.ParentID).Name;
+            <tr>
+                <td>
+                    @product.ID
+                </td>
+                <td>
+                    @product.Name
+
+                </td>
+                <td>
+                    @product.Price vnđ
+                </td>
+                <td>
+                    <img src="@product.Image" alt="Không có ảnh">
+                </td>
+                <td>
+                   @parentName
+                </td>
+                <td>
+                    @Html.Raw(@product.Descriptions)
+                </td>
+                <td>
+                    @product.TopNew
+                </td>
+                <td>
+                    @product.TopDecrease
+                </td>
+                <td>
+                    @product.DecreasePrice vnđ
+                </td>
+
+                <td>
+                    <a href="/admin/quan-ly-product/chinh-sua/@product.ID/">Chỉnh Sửa </a><a href="/admin/quan-ly-product/xoa/@product.ID/">Xoá</a>
+
+                </td>
+            </tr>  
+           
+        }
+    </table>
+    
+</body>
+</html>

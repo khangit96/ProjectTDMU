@@ -39,12 +39,32 @@ namespace ShopThoiTrang.Models
 
         public bool? Status { get; set; }
 
-        public bool? TopNew { get; set; }
+        [StringLength(10)]
+        public string TopNew { get; set; }
 
         public decimal? DecreasePrice { get; set; }
 
-        public bool? TopDecrease { get; set; }
+        [StringLength(10)]
+        public string TopDecrease { get; set; }
 
         public virtual ProductCategory ProductCategory { get; set; }
+        public Product(String productName,int parentID,decimal productPrice,String productImage,String productDescription,String isTopDescrease,decimal decreasePrice,String isTopNew)
+        {
+            this.Name = productName;
+            this.ParentID = parentID;
+            this.Price = productPrice;
+            this.Image = productImage;
+            this.Descriptions = productDescription;
+            this.TopDecrease = isTopDescrease;
+            this.DecreasePrice = decreasePrice;
+            this.TopNew = isTopNew;
+
+
+        }
+        public Product()
+        {
+
+        }
+
     }
 }

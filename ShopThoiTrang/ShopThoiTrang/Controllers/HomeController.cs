@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopThoiTrang.Models;
 
 namespace ShopThoiTrang.Controllers
 {
     public class HomeController : Controller
     {
+        DBShop db = new DBShop();
+
+        //Trang chủ
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        //Hàm lấy danh sách những sản phẩm mới
+        public List<Product> getNewProduct()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            return db.Products.ToList();
         }
-
-        public ActionResult Contact()
+        //Hàm lấy danh sách những sản phẩm giảm giá
+        public List<Product> getDecrease()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return db.Products.ToList();
+         
         }
-    }
+	}
 }

@@ -19,7 +19,6 @@ namespace ShopThoiTrang.Models
 
         [StringLength(250)]
         public string Name { get; set; }
-
         public int? ParentID { get; set; }
 
         public virtual Category Category { get; set; }

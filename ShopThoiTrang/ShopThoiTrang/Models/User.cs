@@ -9,9 +9,15 @@ namespace ShopThoiTrang.Models
     [Table("User")]
     public partial class User
     {
-        public int? id { get; set; }
-
-        [Key]
+       [Key]
+        public int id { get; set; }
+        public User(String username,String password)
+        {
+            this.username = username;
+            this.password = password;
+        }
+        public User()
+        { }
         [StringLength(50)]
         public string username { get; set; }
 

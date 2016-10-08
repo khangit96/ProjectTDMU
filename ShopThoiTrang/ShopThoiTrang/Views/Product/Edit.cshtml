@@ -1,0 +1,127 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var productCategory = ViewBag.productCategory;
+    var product = ViewBag.product;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Chỉnh Sửa Product</title>
+</head>
+<body>
+    <h1 style="text-align:center">Thêm mới sản phẩm</h1>
+    <div class="input">
+        <form class="form-horizontal" method="post" action="@Url.Action("SaveEditProduct", "Product", new {id=product.ID})">
+            <div class="form-group">
+                <label for="nameProduct" class="col-sm-2 col-sm-offset-2 control-label">Tên sản phẩm</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="productName" value="@product.Name" placeholder="Tên sản phẩm">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Giá</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" value="@product.Price" name="productPrice" placeholder="Giá sản phẩm">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Mô tả chi tiết</label>
+                <div class="col-sm-5">
+                    <textarea class="ckeditor" name="productDescription" rows="3">@product.Descriptions</textarea>
+
+
+                    <script type="text/javascript">
+                        CKEDITOR.replace('productDescription', {
+                            htmlEncodeOutput: true
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Ảnh đại diện</label>
+                <div class="col-sm-5">
+                    <input type="text" id="Image" value="@product.Image" name="productImage" />
+                    <input type="button" id="chooseImage" value="Chọn ảnh" class="btn btn-default" />
+                </div>
+                <script>
+                    //Hàm Duyệt ảnh của ckfinder
+                    $("#chooseImage").click(function () {
+                        var finder = new CKFinder();
+                        finder.selectActionFunction = function (fileUrl) {
+                            fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                            // $("#Image").attr("src", $(this).replace("", '~/Content/files/' + fileUrl));
+                            //    $("#Image").src = '~/Content/files/1.jpg';
+
+                            $("#Image").val('~/Content/files/' + fileUrl);
+                        };
+
+                        finder.popup();
+                    });
+                </script>
+
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Danh mục</label>
+                <div class="col-sm-5">
+                    <select class="form-control" name="productCategory">
+                        @foreach (var pc in productCategory)
+                        {
+                            <option value="@pc.ID">@pc.Name</option>
+                        }
+
+
+
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Giảm giá</label>
+                <div class="col-sm-5">
+                    @if(product.TopDecrease=="Có")
+                     {
+                         <label class="radio-inline"><input type="radio" checked value="Có" name="optIsDescreasePrice"> Có</label>
+                          <label class="radio-inline"><input type="radio" value="Không" name="optIsDescreasePrice"> Không</label>
+                          <label class="radio-inline">Giá giảm <input type="text" value="@product.DecreasePrice" name="descreasePrice"></label>
+                    }
+                    else
+                    {
+                         <label class="radio-inline"><input type="radio" value="Có" name="optIsDescreasePrice"> Có</label>
+                         <label class="radio-inline"><input type="radio" checked value="Không" name="optIsDescreasePrice"> Không</label>
+                          <label class="radio-inline">Giá giảm <input  type="text" name="descreasePrice"></label>
+                    }
+                   
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputPassword3" class="col-sm-2 col-sm-offset-2 control-label">Sản phẩm mới</label>
+                <div class="col-sm-5" id="=">
+                @if (product.TopNew == "Có")
+                {
+                    
+                }
+                else{
+                    <label class="radio-inline"><input type="radio"  value="Có" name="optIsTopNew"> Có</label>
+                    <label class="radio-inline"><input type="radio" checked value="Không" name="optIsTopNew"> Không</label>
+                    }
+                   
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-10">
+                    <button type="submit" class="btn btn-info">Lưu</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <a href="/admin/quan-ly-product/">Quay lại</a>
+    </div>
+</body>
+</html>

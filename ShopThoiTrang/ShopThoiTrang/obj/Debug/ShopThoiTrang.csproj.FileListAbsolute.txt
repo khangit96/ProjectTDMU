@@ -53,3 +53,5 @@ C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\bin\Microsoft.Owin.Se
 C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\obj\Debug\ShopThoiTrang.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\obj\Debug\ShopThoiTrang.dll
 C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\obj\Debug\ShopThoiTrang.pdb
+C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\bin\CKFinder.dll
+C:\Users\Administrator\Desktop\ShopThoiTrang\ShopThoiTrang\bin\CKFinder.pdb

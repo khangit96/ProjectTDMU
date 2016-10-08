@@ -1,31 +1,543 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutParentHome.cshtml";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+<div class="products">
+    <!-- Phần nội dung hiển thị sản phẩm -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Phần hiển thị danh sách sản phẩm -->
+            <div class="product-lists">
+                <!-- Phần sản phẩm mới -->
+                <div class="row">
+                    <!-- Dòng 1 -->
+                    <div class="col-sm-12">
+                        <p class="box-title">Sản Phẩm Mới</p>
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Dòng 2 Chia làm 4 cột thể hiện 4 sản phầm -->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 1 Sản phẩm đầu tiên -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/2.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm đầu tiên-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 2 Sản phẩm thứ 2 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm thứ 2-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 3 Sản phẩm thứ 3 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                              
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm thứ 3-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 4 Sản phẩm thứ 4 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm thứ 4-->
+                </div>
+                <!-- Kết thúc dòng 2 -->
+                <div class="row">
+                    <!-- Dòng 2 Chia làm 4 cột thể hiện 4 sản phầm -->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 1 Sản phẩm đầu tiên -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm đầu tiên-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 2 Sản phẩm thứ 2 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm th-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 2 Sản phẩm thứ 2 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm th-->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 2 Sản phẩm thứ 2 -->
+                        <div class="image">
+                            <!-- Phần hình ảnh sản phầm -->
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <!-- Kết thúc phần hình ảnh -->
+                        <div class="title">
+                            <!-- Phần tiêu đề sản phẩm -->
+                            <h2><a href="#">Quần Tây</a></h2>
+                        </div>
+                        <!-- Kết thúc phần tiêu đề-->
+                        <div class="info">
+                            <!-- Phần thông tin giá cả -->
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <!-- Kết thúc phần thông tin giá -->
+                            <div class="pull-right">
+                                <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                            <!-- Kết thúc hiển thị giỏ hàng -->
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm th-->
+                </div>
+                <!-- Kết thúc dòng 2 -->
+                <!-- Phần sản phẩm giảm giá -->
+                <div class="row">
+                    <!-- Dòng 1 -->
+                    <div class="col-sm-12">
+                        <p class="box-title">Sản Phẩm Giảm Giá</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <!-- Dòng 2 Chia làm 4 cột -->
+                    <div class="col-sm-3 product-item">
+                        <!--Cột 1 Sản phẩm đầu tiên -->
+                        <div class="image">
+                            <a href="#">
+                                <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <div class="title">
+                            <h2><a href="#">Quần Tây </a></h2>
+                        </div>
+                        <div class="info">
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm đầu tiên-->
+                    <div class="col-sm-3 product-item">
+                        <!-- Cột 2 sản phẩm thứ 2 -->
+                        <div class="image">
+                            <a href="#">
+                                <img src="img/product/2.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <div class="title">
+                            <h2><a href="#">By ninja</a></h2>
+                        </div>
+                        <div class="info">
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm 2-->
+                    <div class="col-sm-3 product-item">
+                        <!-- Côt 3 sản phẩm 3 -->
+                        <div class="image">
+                            <a href="#">
+                                <img src="img/product/3.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <div class="title">
+                            <h2><a href="#">PhucPM</a></h2>
+                        </div>
+                        <div class="info">
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm 3-->
+                    <div class="col-sm-3 product-item">
+                        <!-- Cột 4 sản phẩm 4 -->
+                        <div class="image">
+                            <a href="#">
+                                <img src="img/product/4.jpg" class="img-responsive" alt="" />
+                            </a>
+                        </div>
+                        <div class="title">
+                            <h2><a href="#">Andy Pham</a></h2>
+                        </div>
+                        <div class="info">
+                            <div class="pull-left">
+                                <del>
+                                    <span>500.000vnđ</span>
+                                </del>
+                                <ins>
+                                    <span>300.000vnđ</span>
+                                </ins>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn-cart" href="#">
+                                    <i class="glyphicon glyphicon-shopping-cart"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Kết thúc sản phẩm 4-->
+                    <div class="row">
+                        <!-- Dòng 2 Chia làm 4 cột -->
+                        <div class="col-sm-3 product-item">
+                            <!--Cột 1 Sản phẩm đầu tiên -->
+                            <div class="image">
+                                <a href="#">
+                                    <img src="img/product/1.jpg" class="img-responsive" alt="" />
+                                </a>
+                            </div>
+                            <div class="title">
+                                <h2><a href="#">Flying ninja</a></h2>
+                            </div>
+                            <div class="info">
+                                <div class="pull-left">
+                                    <del>
+                                        <span>500.000vnđ</span>
+                                    </del>
+                                    <ins>
+                                        <span>300.000vnđ</span>
+                                    </ins>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn-cart" href="#">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Kết thúc sản phẩm đầu tiên-->
+                        <div class="col-sm-3 product-item">
+                            <!-- Cột 2 sản phẩm thứ 2 -->
+                            <div class="image">
+                                <a href="#">
+                                    <img src="img/product/2.jpg" class="img-responsive" alt="" />
+                                </a>
+                            </div>
+                            <div class="title">
+                                <h2><a href="#">By ninja</a></h2>
+                            </div>
+                            <div class="info">
+                                <div class="pull-left">
+                                    <del>
+                                        <span>500.000vnđ</span>
+                                    </del>
+                                    <ins>
+                                        <span>300.000vnđ</span>
+                                    </ins>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn-cart" href="#">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Kết thúc sản phẩm 2-->
+                        <div class="col-sm-3 product-item">
+                            <!-- Côt 3 sản phẩm 3 -->
+                            <div class="image">
+                                <a href="#">
+                                    <img src="img/product/3.jpg" class="img-responsive" alt="" />
+                                </a>
+                            </div>
+                            <div class="title">
+                                <h2><a href="#">PhucPM</a></h2>
+                            </div>
+                            <div class="info">
+                                <div class="pull-left">
+                                    <del>
+                                        <span>500.000vnđ</span>
+                                    </del>
+                                    <ins>
+                                        <span>300.000vnđ</span>
+                                    </ins>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn-cart" href="#">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Kết thúc sản phẩm 3-->
+                        <div class="col-sm-3 product-item">
+                            <!-- Cột 4 sản phẩm 4 -->
+                            <div class="image">
+                                <a href="#">
+                                    <img src="img/product/4.jpg" class="img-responsive" alt="" />
+                                </a>
+                            </div>
+                            <div class="title">
+                                <h2><a href="#">Andy Pham</a></h2>
+                            </div>
+                            <div class="info">
+                                <div class="pull-left">
+                                    <del>
+                                        <span>500.000vnđ</span>
+                                    </del>
+                                    <ins>
+                                        <span>300.000vnđ</span>
+                                    </ins>
+                                </div>
+                                <div class="pull-right">
+                                    <a class="btn-cart" href="#">
+                                        <i class="glyphicon glyphicon-shopping-cart"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Kết thúc sản phẩm 4-->
+                    </div>
+                </div>
+                <!--Kết thúc phần danh sách sản phẩm-->
+            </div>
+            <!--Kết thúc container-->
+    </section>
+    <!--Kết thúc phần hiển thị sản phẩm-->
 </div>
