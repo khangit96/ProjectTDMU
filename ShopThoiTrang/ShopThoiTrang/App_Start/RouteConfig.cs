@@ -14,33 +14,6 @@ namespace ShopThoiTrang
             /*Định nghĩa route*/
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            /*Phần Category*/
-                routes.MapRoute(//Hiển thị danh sách Category
-               name: "ManageCategory",
-               url: "admin/quan-ly-category/",
-               defaults: new { controller = "Category", action = "Index" }
-                );
-               routes.MapRoute(//Tạo mới Category
-               name: "CreateCategory",
-               url: "admin/quan-ly-category/tao-moi/",
-               defaults: new { controller = "Category", action = "Create" }
-               );
-               routes.MapRoute(//Chỉnh sữa Category
-             name: "EditCategory",
-             url: "admin/quan-ly-category/chinh-sua/{id}/",
-             defaults: new { controller = "Category", action = "Edit" }
-             );
-               routes.MapRoute(//Chi tiết Category
-           name: "DetailCategory",
-           url: "admin/quan-ly-category/chi-tiet/{id}/",
-           defaults: new { controller = "Category", action = "Detail" }
-           );
-               routes.MapRoute(//Xoá Category
-               name: "DeleteCategory",
-               url: "admin/quan-ly-category/xoa/{id}/",
-               defaults: new { controller = "Category", action = "Delete" }
-               );
-
            /*Phần ProductCategory*/
                routes.MapRoute(//Hiển thị danh sách Product Category
                    name: "ManageProductCategory",
@@ -49,23 +22,29 @@ namespace ShopThoiTrang
                     );
                routes.MapRoute(//Tạo mới Product Category
                name: "CreateProductCategory",
-               url: "admin/quan-ly-product-category/tao-moi/",
-               defaults: new { controller = "ProductCategory", action = "Create" }
+               url: "admin/quan-ly-product-category/them-moi/",
+               defaults: new { controller = "ProductCategory", action = "CreateProductCategory" }
                );
+
+               routes.MapRoute(//Tạo mới Product Category
+                 name: "SaveCreateProductCategory",
+                 url: "admin/quan-ly-product-category/them-moi/luu",
+                 defaults: new { controller = "ProductCategory", action = "SaveCreateProductCategory" }
+                 );
                routes.MapRoute(//Chỉnh sữa ProductCategory
              name: "EditProductCategory",
              url: "admin/quan-ly-product-category/chinh-sua/{id}/",
-             defaults: new { controller = "ProductCategory", action = "Edit" }
+             defaults: new { controller = "ProductCategory", action = "EditProductCategory" }
              );
-               routes.MapRoute(//Chi tiết Product Category
-           name: "DetailProductCategory",
-           url: "admin/quan-ly-product-category/chi-tiet/{id}/",
-           defaults: new { controller = "ProductCategory", action = "Detail" }
-           );
+               routes.MapRoute(//Chỉnh sữa ProductCategory
+                  name: "SaveEditProductCategory",
+                  url: "admin/quan-ly-product-category/chinh-sua/luu/{id}/",
+                  defaults: new { controller = "ProductCategory", action = "SaveEditProductCategory" }
+                  );
                routes.MapRoute(//Xoá Product Category
                name: "DeleteProductCategory",
                url: "admin/quan-ly-product-category/xoa/{id}/",
-               defaults: new { controller = "ProductCategory", action = "Delete" }
+               defaults: new { controller = "ProductCategory", action = "DeleteProductCategory" }
                );
 
 
@@ -75,6 +54,11 @@ namespace ShopThoiTrang
             name: "CreateProduct",
             url: "admin/quan-ly-product/them-moi/",
             defaults: new { controller = "Product", action = "CreateProduct" }
+          );
+            routes.MapRoute(//Thêm mới
+            name: "SaveCreateProduct",
+            url: "admin/quan-ly-product/them-moi/luu/",
+            defaults: new { controller = "Product", action = "SaveCreateProduct" }
           );
             routes.MapRoute(//Chỉnh sửa
              name: "EditProduct",
@@ -143,8 +127,8 @@ namespace ShopThoiTrang
             //Mặc định
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "trang-chu/",
+                defaults: new { controller = "Home", action = "Index"}
             );
         }
     }

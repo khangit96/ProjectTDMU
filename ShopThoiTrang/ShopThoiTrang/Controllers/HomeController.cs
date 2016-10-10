@@ -14,9 +14,19 @@ namespace ShopThoiTrang.Controllers
         //Trang chủ
         public ActionResult Index()
         {
+            ViewBag.productList = getAllProduct();
             return View();
         }
 
+        //Hàm lấy danh mục sản phẩm
+        public List<ProductCategory> getAllProductCategory()
+        {
+            return db.ProductCategories.ToList();
+        }
+        public List<Product> getAllProduct()
+        {
+            return db.Products.ToList();
+        }
         //Hàm lấy danh sách những sản phẩm mới
         public List<Product> getNewProduct()
         {

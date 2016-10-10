@@ -9,45 +9,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Tạo mới Product Category</title>
+    <title>Thêm Mới Danh Mục Sản Phẩm</title>
 </head>
 <body>
-    <h1>Tạo Mới Product Cateogry</h1>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>ProductCategory</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-    
+    <h1 style="text-align:center">Thêm mới danh mục</h1>
+    <div class="input">
+        <form class="form-horizontal" method="post" action="@Url.Action("SaveCreateProductCategory", "ProductCategory")">
             <div class="form-group">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name)
-                    @Html.ValidationMessageFor(model => model.Name)
+                <label for="nameProduct" class="col-sm-2 col-sm-offset-2 control-label">Tên danh mục</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="productCategoryName" placeholder="Tên danh mục">
                 </div>
             </div>
-    
+          
+ 
             <div class="form-group">
-                @Html.LabelFor(model => model.ParentID, "ParentID", new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("ParentID", String.Empty)
-                    @Html.ValidationMessageFor(model => model.ParentID)
+                <div class="col-sm-offset-4 col-sm-10">
+                    <button type="submit" class="btn btn-info">Thêm</button>
                 </div>
             </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
-        </div>
-    }
-    
+        </form>
+    </div>
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        <a href="/admin/quan-ly-product-category/">Quay lại</a>
     </div>
 </body>
 </html>

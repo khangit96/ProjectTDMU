@@ -1,7 +1,8 @@
-﻿@model IEnumerable<ShopThoiTrang.Models.ProductCategory>
-
+﻿
 @{
     Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var productCategoryList = ViewBag.productCategoryList;
+    var count = 0;
 }
 
 
@@ -10,40 +11,45 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Quản Lý ProductCategory</title>
+    <title>Danh Mục Sản Phẩm</title>
 </head>
 <body>
-    <h1>Quản Lý ProductCategory</h1>
+    <h1 style="text-align:center">Danh Mục Sản Phẩm</h1>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        <a href="/admin/quan-ly-product-category/them-moi/">Thêm mới</a>
     </p>
-    <table class="table">
+    <table class="table table-bordered" style="text-align:center">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Category.Name)
+            <th style="text-align:center">
+                #
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
+            <th style="text-align:center"> Tên danh mục</th>
+
+            <th style="text-align:center">
+                Tuỳ chọn
             </th>
-            <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ID }) 
-                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var pc in productCategoryList)
+        {
+            count++;
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @pc.Name
+
+                </td>
+
+                <td>
+                    <a href="/admin/quan-ly-product-category/chinh-sua/@pc.ID/">Chỉnh Sửa </a><a href="/admin/quan-ly-product-category/xoa/@pc.ID/">Xoá</a>
+
+                </td>
+            </tr>
+
+        }
     </table>
+
 </body>
 </html>

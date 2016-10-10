@@ -43,9 +43,9 @@ namespace ShopThoiTrang.Controllers
             }
             //chuyển về trang login
             return RedirectToRoute("Login", "Index");
+        //Thêm sản phẩm 
           
         }
-        //Thêm sản phẩm 
         public ActionResult SaveCreateProduct()
         {
             if (Session["login"] != null)

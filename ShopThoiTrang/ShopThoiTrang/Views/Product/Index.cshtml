@@ -2,6 +2,9 @@
 @{
     Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
     var productList = ViewBag.productList;
+    var count = 0;
+    IFormatProvider formatProvider =
+       new System.Globalization.CultureInfo("vi-VN");
   
 }
 
@@ -17,57 +20,58 @@
     <p>
         <a href="/admin/quan-ly-product/them-moi/">Thêm mới</a>
     </p>
-    <table class="table table-bordered">
+    <table class="table table-bordered" style="text-align:center">
         <tr>
-            <th>
+            <th style="text-align:center">
                 #
             </th>
-            <th>
-                Tên
+            <th style="text-align:center">
+                Tên sản phẩm
             </th>
-            <th>
+            <th style="text-align:center">
                 Giá
             </th>
-            <th>
+            <th style="text-align:center">
                 Ảnh đại diện
             </th>
-            <th>
+            <th style="text-align:center">
                 Bộ sưu tập
             </th>
-            <th>
+            <th style="text-align:center">
                 Mô tả chi tiết
             </th>
-            <th>
+            <th style="text-align:center">
                 Sản phẩm mới
             </th>
-            <th>
+            <th style="text-align:center">
                 Sản phẩm giảm giá
             </th>
-            <th>
+            <th style="text-align:center">
                 Giá giảm
             </th>
-            <th>
+            <th style="text-align:center">
                 Tuỳ chọn
             </th>
         </tr>
 
         @foreach (var product in productList)
         {
+            count++;
             var db = new ShopThoiTrang.Models.DBShop();
             var parentName = db.ProductCategories.Find(product.ParentID).Name;
             <tr>
                 <td>
-                    @product.ID
+                    @count
                 </td>
                 <td>
                     @product.Name
 
                 </td>
                 <td>
-                    @product.Price vnđ
+                    <span>@product.Price.ToString("C", formatProvider)</span>
                 </td>
                 <td>
-                    <img src="@product.Image" alt="Không có ảnh">
+                    <img src="@Url.Content(@product.Image)" height="50" width="50" alt="Không có ảnh">
                 </td>
                 <td>
                    @parentName
@@ -82,11 +86,12 @@
                     @product.TopDecrease
                 </td>
                 <td>
-                    @product.DecreasePrice vnđ
+                    <span>@product.DecreasePrice.ToString("C", formatProvider)</span>
+
                 </td>
 
                 <td>
-                    <a href="/admin/quan-ly-product/chinh-sua/@product.ID/">Chỉnh Sửa </a><a href="/admin/quan-ly-product/xoa/@product.ID/">Xoá</a>
+                    <a href="/admin/quan-ly-product/chinh-sua/@product.ID/">Chỉnh Sửa  </a><a href="/admin/quan-ly-product/xoa/@product.ID/">Xoá</a>
 
                 </td>
             </tr>  

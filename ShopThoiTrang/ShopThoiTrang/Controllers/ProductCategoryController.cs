@@ -14,126 +14,128 @@ namespace ShopThoiTrang.Controllers
     public class ProductCategoryController : Controller
     {
         private DBShop db = new DBShop();
-
-        // GET: /CreateProductCategory/
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
+            //Kiểm tra session login
             if (Session["login"] != null)
             {
-                var productcategories = db.ProductCategories.Include(p => p.Category);
-                return View(await productcategories.ToListAsync());
+                ViewBag.productCategoryList = db.ProductCategories.ToList();
+                return View();
             }
             //chuyển về trang login
             return RedirectToRoute("Login", "Index");
-         
+
         }
 
-        // GET: /CreateProductCategory/Details/5
-        public async Task<ActionResult> Details(int? id)
+        //Tạo mới sản phẩm
+        public ActionResult CreateProductCategory()
         {
-            if (id == null)
+            if (Session["login"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Create");
             }
-            ProductCategory productcategory = await db.ProductCategories.FindAsync(id);
-            if (productcategory == null)
-            {
-                return HttpNotFound();
-            }
-            return View(productcategory);
-        }
+            //chuyển về trang login
+            return RedirectToRoute("Login", "Index");
 
-        // GET: /CreateProductCategory/Create
-        public ActionResult Create()
-        {
-            ViewBag.ParentID = new SelectList(db.Categories, "ID", "Name");
-            return View();
         }
-
-        // POST: /CreateProductCategory/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="ID,Name,ParentID")] ProductCategory productcategory)
+        //Thêm sản phẩm 
+        public ActionResult SaveCreateProductCategory()
         {
-            if (ModelState.IsValid)
+            if (Session["login"] != null)
             {
-                db.ProductCategories.Add(productcategory);
-                await db.SaveChangesAsync();
+                String productCategoryName = Request["productCategoryName"];
+                ProductCategory pc = new ProductCategory();
+                pc.Name = productCategoryName;
+                db.ProductCategories.Add(pc);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            return RedirectToRoute("Login", "Index");
 
-            ViewBag.ParentID = new SelectList(db.Categories, "ID", "Name", productcategory.ParentID);
-            return View(productcategory);
         }
 
-        // GET: /CreateProductCategory/Edit/5
-        public async Task<ActionResult> Edit(int? id)
+
+        public ActionResult EditProductCategory(int id)
         {
-            if (id == null)
+
+            if (Session["login"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                var pc = db.ProductCategories.Find(id);//tìm sản phẩm cần sữa
+                ViewBag.pc = pc;
+                return View("Edit");
+
             }
-            ProductCategory productcategory = await db.ProductCategories.FindAsync(id);
-            if (productcategory == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ParentID = new SelectList(db.Categories, "ID", "Name", productcategory.ParentID);
-            return View(productcategory);
+            //chuyển về trang login
+            return RedirectToRoute("Login", "Index");
+
         }
 
-        // POST: /CreateProductCategory/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="ID,Name,ParentID")] ProductCategory productcategory)
+
+        public ActionResult SaveEditProductCategory(int id)
         {
-            if (ModelState.IsValid)
+            if (Session["login"] != null)
             {
-                db.Entry(productcategory).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                String productCategoryName = Request["productCategoryName"];
+                ProductCategory pc = db.ProductCategories.Find(id);
+                pc.Name = productCategoryName;
+                db.Entry(pc).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ParentID = new SelectList(db.Categories, "ID", "Name", productcategory.ParentID);
-            return View(productcategory);
+            return RedirectToRoute("Login", "Index");
+
+
         }
 
-        // GET: /CreateProductCategory/Delete/5
-        public async Task<ActionResult> Delete(int? id)
+        public ActionResult DeleteProductCategory(int id)
         {
-            if (id == null)
+            if (Session["login"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ProductCategory pc = db.ProductCategories.Find(id);
+                db.ProductCategories.Remove(pc);
+                db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
-            ProductCategory productcategory = await db.ProductCategories.FindAsync(id);
-            if (productcategory == null)
-            {
-                return HttpNotFound();
-            }
-            return View(productcategory);
+            return RedirectToRoute("Login", "Index");
+
+
         }
 
-        // POST: /CreateProductCategory/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(int id)
-        {
-            ProductCategory productcategory = await db.ProductCategories.FindAsync(id);
-            db.ProductCategories.Remove(productcategory);
-            await db.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
+        //Xoá sản phẩm
+        /*   public async Task<ActionResult> Delete(int? id)
+           {
+               if (id == null)
+               {
+                   return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+               }
+               Product product = await db.Products.FindAsync(id);
+               if (product == null)
+               {
+                   return HttpNotFound();
+               }
+               return View(product);
+           }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+           // POST: /CreateProduct/Delete/5
+           [HttpPost, ActionName("Delete")]
+           [ValidateAntiForgeryToken]
+           public async Task<ActionResult> DeleteConfirmed(int id)
+           {
+               Product product = await db.Products.FindAsync(id);
+               db.Products.Remove(product);
+               await db.SaveChangesAsync();
+               return RedirectToAction("Index");
+           }
+
+           protected override void Dispose(bool disposing)
+           {
+               if (disposing)
+               {
+                   db.Dispose();
+               }
+               base.Dispose(disposing);
+           }
+       */
+
     }
 }
