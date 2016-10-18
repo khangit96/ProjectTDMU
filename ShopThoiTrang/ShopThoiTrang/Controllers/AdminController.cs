@@ -11,7 +11,7 @@ using ShopThoiTrang.Models;
 
 namespace ShopThoiTrang.Controllers
 {
-    public class UserController : Controller
+    public class AdminController : Controller
     {
         private DBShop db = new DBShop();
 
@@ -21,7 +21,7 @@ namespace ShopThoiTrang.Controllers
             
             if (Session["login"] != null)
             {
-                return View(await db.Users.ToListAsync());
+                return View(await db.Admins.ToListAsync());
             }
             //chuyển về trang login
             return RedirectToRoute("Login", "Index");
@@ -36,7 +36,7 @@ namespace ShopThoiTrang.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                User user = await db.Users.FindAsync(id);
+                Admin user = await db.Admins.FindAsync(id);
                 if (user == null)
                 {
                     return HttpNotFound();
@@ -61,13 +61,13 @@ namespace ShopThoiTrang.Controllers
      
         [HttpPost]//Lấy dữ liệu từ form create
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include="id,username,password")] User user)
+        public async Task<ActionResult> Create([Bind(Include="id,username,password")] Admin user)
         {
             if (Session["login"] != null)
             {
                 if (ModelState.IsValid)
                 {
-                    db.Users.Add(user);
+                    db.Admins.Add(user);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
@@ -88,7 +88,7 @@ namespace ShopThoiTrang.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                User user = await db.Users.FindAsync(id);
+                Admin user = await db.Admins.FindAsync(id);
                 if (user == null)
                 {
                     return HttpNotFound();
@@ -105,7 +105,7 @@ namespace ShopThoiTrang.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include="id,username,password")] User user)
+        public async Task<ActionResult> Edit([Bind(Include="id,username,password")] Admin user)
         {
             if (Session["login"]!=null)
             {
@@ -131,7 +131,7 @@ namespace ShopThoiTrang.Controllers
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
-                User user = await db.Users.FindAsync(id);
+                Admin user = await db.Admins.FindAsync(id);
                 if (user == null)
                 {
                     return HttpNotFound();
@@ -150,8 +150,8 @@ namespace ShopThoiTrang.Controllers
         {
             if (Session["login"] != null)
             {
-                User user = await db.Users.FindAsync(id);
-                db.Users.Remove(user);
+                Admin user = await db.Admins.FindAsync(id);
+                db.Admins.Remove(user);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

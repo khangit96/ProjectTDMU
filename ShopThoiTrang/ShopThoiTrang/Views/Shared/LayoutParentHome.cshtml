@@ -24,29 +24,7 @@
 
     <header>
         <!-- Phần phía trên cùng -->
-        <div class="top-bar">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div class="pull-left">
-                            <!-- nằm bên trái -->
-                            <p><b>Hotline:</b><u style="color:red">0976671890</u></p>
-                        </div>
-                        <div class="pull-right">
-                            <!-- nằm bên phải -->
-                            <ul class="list-unstyled  top-links">
-                                <!-- bỏ syle của list -->
-                                <li><a href="#">Tài Khoản Của Bạn</a></li>
-                                <li><a href="#">Thanh Toán</a></li>
-                                <li><a href="#">Đăng Nhập</a></li>
-                                <li><a href="#">Đăng Ký</a></li>
-                                </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div><!-- kết thức .top-bar -->
+      
         <!-- Phần header để hiện thị thông tin về website(tìm kiếm sản phẩm,thanh toán,quản lí tài khoản) -->
         <div class="main-header">
             <div class="container-fluid">
@@ -55,26 +33,31 @@
                     <div class="col-sm-3">
                         <div class="logo">
                             <!-- căn giữa logo -->
-                            <img src="~/Content/files/logo.png" class="img-responsive" alt="logo shop">
+                            <img src="~/Content/files/logonew.png" class="img-responsive"  alt="logo shop">
                         </div>
+                        
                     </div>
                     <div class="col-sm-3">
-
-                    </div>
-                    <!-- Phẩn hiển thị giỏ hàng -->
-                    <div class="col-sm-6">
-                        <!--Cột 3:Hiển thị giở hàng nằm bên phải -->
-                        <div class="pull-right">
-                            <div class="cart-wish-w">
-                                <!-- Giỏ hàng -->
-                                <div class="cart-w">
-                                    <span><strong><a href="#"><b style="color:red;font-size:20px">3 Sản phẩm(5)</b></a></strong></span>
-                                    <a href="#" class="btn-cart"><i class="glyphicon glyphicon-shopping-cart"></i></a><!-- Thêm Icon giỏ hàng từ boostrap -->
+                        <div class="slider">
+                            <div class="col-sm-2 searchBox pull-right">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Nhập sản phẩm cần tìm kiếm">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <!-- Kết thúc cột 3 -->
                     </div>
+                    <!-- Phẩn hiển thị giỏ hàng -->
+                    <div class="col-sm-3 pull-right">
+                        <div class="shopping-cart">
+                            Giỏ hàng
+
+                        </div>
+                     
+                    </div>
+                </div>
                 </div>
                 <!-- kết thúc .main-header -->
                 <!-- Menu Navigation bar sử dụng bootstrap  -->
@@ -82,22 +65,25 @@
                     <div class="container-fluid">
                         <div class="row">
                             <ul class="nav nav-pills">
-                                <li class="active">
+                                <li>
                                     <!--class active:làm nổi bật trang chủ  -->
-                                    <a href="#"><i class="glyphicon glyphicon-home"></i> Trang Chủ</a>
+                                    <a href="/"><i class="glyphicon glyphicon-home"></i></a>
                                 </li>
-                                <li><a href="#">Tin Tức</a></li>
+                                <li class="active"><a href="#">Sản Phẩm</a></li>
                                 <li><a href="#">Giới Thiệu</a></li>
-                                <li><a href="#">Blog</a></li>
+                                <li ><a href="#">Tin Tức</a></li>
+                                <li><a href="#">Hướng Dẫn Thanh Toán</a></li>
+                                <li><a href="#">Thành Viên</a></li>
+                                <li><a href="#">Hỏi Đáp</a></li>
                                 <li><a href="#">Liên Hệ</a></li>
+                                <li><a href="#">Tuyển Dụng</a></li>
+
+                
+                                
                                 <!-- Phần searchBox -->
                                 <div class="col-sm-2 searchBox pull-right">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Nhập sản phẩm cần tìm kiếm">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                                        </span>
-                                    </div>
+                                   <!----> 
+                                   
                                 </div>
                             </ul>
                         </div>
@@ -126,14 +112,15 @@
                                     <ul>
                                         @foreach(var pc in productCategoryList)
                                         {
-                                          <li><a href="#">@pc.Name</a></li>
+                                            var reWriteName = ShopThoiTrang.Models.RewriteURL.GenerateURL(@pc.Name);
+                                          <li><a class="glyphicon glyphicon-play-circle"></a>  <a href="/@reWriteName-@pc.ID/">@pc.Name</a></li>
                                         }
                                     </ul>
                                 </div>
                                 <!-- Phần hiển thị fanpage facebook -->
                                 <div class="fanpage">
-                                    <h1>Phần hiển thị fanpage faceboook</h1>
-                                </div>
+                                    <!--Phần bên trái-->
+                                 </div>
                             </div>
                             <!-- Kết thúc cột 1:danh mục sản phẩm -->
 
@@ -142,7 +129,11 @@
                                 @RenderBody()
                             </div>
                             <div class="col-sm-2">
-                                <h1>Phần nhảm nhí</h1>
+                                <!--Phần bên phải-->
+                                <div class="topUser">
+
+                                    
+                                </div>
                             </div>
                             <!-- Kết thúc .col-sm-10-->
                         </div>
@@ -175,5 +166,8 @@
                 </div>
     </footer>
     <!--Kết thúc .footer-->
+    <script src="~/Content/main.js"></script>
+    <script src="~/Content/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/bootstrap.min.js"></script>
 </body>
 </html>

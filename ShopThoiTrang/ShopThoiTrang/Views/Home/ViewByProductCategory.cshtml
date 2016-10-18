@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "ViewByProductCategory";
+    Layout = "~/Views/Shared/LayoutParentHome.cshtml";
+    var productList = ViewBag.productList;
+    //đinh dạng tiền Việt Nam
+    IFormatProvider formatProvider =new System.Globalization.CultureInfo("vi-VN");
+    var productCategoryName =ViewBag.productCategoryName;
+}
+
+<div class="products">
+    <!-- Phần nội dung hiển thị sản phẩm -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Phần hiển thị danh sách sản phẩm -->
+            <div class="product-lists">
+
+
+                <!-- Phần sản phẩm mới -->
+                <div class="row">
+                    <!-- Dòng 1 -->
+                    <div class="col-sm-12">
+                        <p class="box-title">@productCategoryName</p>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var p in productList)
+                    {
+                        <div class="col-sm-3 product-item">
+                            <!--Cột 1 Sản phẩm đầu tiên -->
+                            <div class="image">
+                                <!-- Phần hình ảnh sản phầm -->
+                                <a href="/san-pham/chi-tiet-@p.ID/">
+                                    <img src="@Url.Content(@p.Image)" height="100" width="100" class="img-responsive" alt="No Image" />
+                                </a>
+                            </div>
+                            <!-- Kết thúc phần hình ảnh -->
+                            <div class="title">
+                                <!-- Phần tiêu đề sản phẩm -->
+                                <h2><a href="/san-pham/chi-tiet-@p.ID/">@p.Name</a></h2>
+                            </div>
+                            <!-- Kết thúc phần tiêu đề-->
+                            <div class="info">
+                                <!-- Phần thông tin giá cả -->
+                                <div class="pull-left">
+                                    @if(p.TopNew=="Có"&& p.TopDecrease=="Không")
+                                    {
+
+                                       
+                                    }
+                                    else if(p.TopNew=="Không"&&p.TopDecrease=="Có")
+                                    {
+                                          
+                                         <del>
+                                            <span>@p.Price.ToString("C", formatProvider)</span>
+
+                                          </del>
+                                        
+                                    }
+                                    else if(p.TopNew=="Có"&&p.TopDecrease=="Có")
+                                    {
+                                      
+                                         <del>
+                                            <span>@p.Price.ToString("C", formatProvider)</span>
+
+                                          </del>
+                                    }
+                                    <ins>
+                                        <span>@p.Price.ToString("C", formatProvider)</span>
+                                    </ins>
+                                </div>
+                                <!-- Kết thúc phần thông tin giá -->
+                                <div class="pull-right">
+                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+                                   
+                                </div>
+                                <!-- Kết thúc hiển thị giỏ hàng -->
+                            </div>
+                        </div>
+                    <!--Kết thúc sản phẩm đầu tiên-->
+                    }
+
+                </div>
+            </div>
+            <!--Kết thúc container-->
+    </section>
+    <!--Kết thúc phần hiển thị sản phẩm-->
+</div>

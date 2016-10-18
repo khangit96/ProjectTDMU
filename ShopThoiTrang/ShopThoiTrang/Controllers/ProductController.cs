@@ -50,21 +50,81 @@ namespace ShopThoiTrang.Controllers
         {
             if (Session["login"] != null)
             {
-                String productName = Request["productName"];
-                decimal productPrice = Decimal.Parse(Request["productPrice"]);
-                String productDescription = WebUtility.HtmlDecode(Request["productDescription"]);
-                int productCategory = Int16.Parse(Request["productCategory"]);
-                String optIsDescreasePrice = Request["optIsDescreasePrice"];
-                decimal descreasePrice = Decimal.Parse(Request["descreasePrice"]);
-                String optIsTopNew = Request["optIsTopNew"];
-                String currentDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-                String productImage = Request["productImage"];
+
+
+                    String productName = Request["productName"];
+                    decimal productPrice=0;
+                    String productDescription = WebUtility.HtmlDecode(Request["productDescription"]);
+                    int productCategory = Int16.Parse(Request["productCategory"]);
+                    String optIsDescreasePrice = Request["optIsDescreasePrice"];
+                    decimal descreasePrice=0;
+                    String optIsTopNew = Request["optIsTopNew"];
+                    String productImage = Request["productImage"];
+                    Boolean checkPName = true;
+                    Boolean checkPPrice = true;
+                    Boolean checkPImage = true;
+                    Boolean checkDecreasePrice = true;
+
+
+                    try
+                    { 
+                        productPrice = Decimal.Parse(Request["productPrice"]);
+                        descreasePrice = Decimal.Parse(Request["descreasePrice"]);
+
+                    }
+                    catch (Exception e)
+                    {
+                       
+                    }
+                    
+                    if (productName.Equals(""))
+                    {
+                        checkPName = false;
+                    }
+                   if(productPrice==0)
+                   {
+                       Session["pPrice"] = "false";
+                       checkPPrice = false;
+
+                   }
+                   if(productImage.Equals(""))
+                   {  
+                       checkPImage = false;
+
+                   }
+                   if (optIsDescreasePrice == "Có" && descreasePrice == 0)
+                   {
+                       checkDecreasePrice = false;
+                   }
+                //Kiểm tra hợp lệ dữ liệu
+                if(checkPName==false||checkPPrice==false||checkPImage==false||checkDecreasePrice==false)
+                {
+                    ViewBag.productName = productName;
+                    ViewBag.productPrice = productPrice;
+                    ViewBag.productImage = productImage;
+                    ViewBag.productCategory1 = productCategory;
+                    ViewBag.productDescription = productDescription;
+                    ViewBag.descreasePrice = descreasePrice;
+                    ViewBag.optIsTopNew = optIsTopNew;
+                    ViewBag.optIsDescreasePrice = optIsDescreasePrice;
+
+                    //
+                    ViewBag.checkPName = checkPName;
+                    ViewBag.checkPPrice =checkPPrice;
+                    ViewBag.checkPImage =checkPImage;
+                    ViewBag.checkDecreasePrice = checkDecreasePrice;
+                    ViewBag.productCategory = db.ProductCategories.ToList();
+                   return View("Create");
+                }
+
                 Product product = new Product(productName, productCategory, productPrice, productImage, productDescription, optIsDescreasePrice, descreasePrice, optIsTopNew);
                 db.Products.Add(product);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return RedirectToRoute("Login", "Index");
+           return RedirectToRoute("Login", "Index");
+
+
 
         }
         
@@ -90,8 +150,8 @@ namespace ShopThoiTrang.Controllers
         {
             if (Session["login"] != null)
             {
-
-                String productName = Request["productName"];
+                //
+               /* String productName = Request["productName"];
                 decimal productPrice = Decimal.Parse(Request["productPrice"]);
                 String productDescription = WebUtility.HtmlDecode(Request["productDescription"]);
                 int productCategory = Int16.Parse(Request["productCategory"]);
@@ -99,8 +159,75 @@ namespace ShopThoiTrang.Controllers
                 decimal descreasePrice = Decimal.Parse(Request["descreasePrice"]);
                 String optIsTopNew = Request["optIsTopNew"];
                 String currentDate = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+                String productImage = Request["productImage"];*/
+                String productName = Request["productName"];
+                decimal productPrice = 0;
+                String productDescription = WebUtility.HtmlDecode(Request["productDescription"]);
+                int productCategory = Int16.Parse(Request["productCategory"]);
+                String optIsDescreasePrice = Request["optIsDescreasePrice"];
+                decimal descreasePrice = 0;
+                String optIsTopNew = Request["optIsTopNew"];
                 String productImage = Request["productImage"];
+                Boolean checkPName = true;
+                Boolean checkPPrice = true;
+                Boolean checkPImage = true;
+                Boolean checkDecreasePrice = true;
+                var product1 = db.Products.Find(id);//tìm sản phẩm cần sữa
+                ViewBag.product = product1;
 
+
+                try
+                {
+                    productPrice = Decimal.Parse(Request["productPrice"]);
+                    descreasePrice = Decimal.Parse(Request["descreasePrice"]);
+
+                }
+                catch (Exception e)
+                {
+
+                }
+
+                if (productName.Equals(""))
+                {
+                    checkPName = false;
+                }
+                if (productPrice == 0)
+                {
+                    Session["pPrice"] = "false";
+                    checkPPrice = false;
+
+                }
+                if (productImage.Equals(""))
+                {
+                    checkPImage = false;
+
+                }
+                if (optIsDescreasePrice == "Có" && descreasePrice == 0)
+                {
+                    checkDecreasePrice = false;
+                }
+                //Kiểm tra hợp lệ dữ liệu
+                if (checkPName == false || checkPPrice == false || checkPImage == false || checkDecreasePrice == false)
+                {
+                    ViewBag.productName = productName;
+                    ViewBag.productPrice = productPrice;
+                    ViewBag.productImage = productImage;
+                    ViewBag.productCategory1 = productCategory;
+                    ViewBag.productDescription = productDescription;
+                    ViewBag.descreasePrice = descreasePrice;
+                    ViewBag.optIsTopNew = optIsTopNew;
+                    ViewBag.optIsDescreasePrice = optIsDescreasePrice;
+
+                    //
+                    ViewBag.checkPName = checkPName;
+                    ViewBag.checkPPrice = checkPPrice;
+                    ViewBag.checkPImage = checkPImage;
+                    ViewBag.checkDecreasePrice = checkDecreasePrice;
+                    ViewBag.productCategory = db.ProductCategories.ToList();
+                    return View("Edit");
+                }
+
+                //
                 Product product = db.Products.Find(id);
                 product.Name=productName;
                 product.Price =productPrice;

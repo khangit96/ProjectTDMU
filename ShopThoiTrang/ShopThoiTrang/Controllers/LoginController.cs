@@ -30,7 +30,7 @@ namespace ShopThoiTrang.Controllers
             string username = Request["username"];
             string password = Request["password"];
          
-            foreach(var user in db.Users.ToList())
+            foreach(var user in db.Admins.ToList())
             {
                 //kiểm tra trong table user xem có đúng username và password ko
                 if (username.Equals(user.username) && password.Equals(user.password))

@@ -16,7 +16,7 @@ namespace ShopThoiTrang.Models
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Checkout>Checkouts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -47,11 +47,11 @@ namespace ShopThoiTrang.Models
                 .WithOptional(e => e.ProductCategory)
                 .HasForeignKey(e => e.ParentID);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Admin>()
                 .Property(e => e.username)
                 .IsFixedLength();
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Admin>()
                 .Property(e => e.password)
                 .IsFixedLength();
         }
