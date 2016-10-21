@@ -14,6 +14,19 @@ namespace ShopThoiTrang
             /*Định nghĩa route*/
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            /*Phần Home*/
+            routes.MapRoute(//Hiển thị danh sách Product Category
+                name: "ViewByProductCategory",
+                url: "{productCateogryname}-{productCategoryID}/",
+                defaults: new { controller = "Home", action = "ViewByProductCategory" }
+
+                 );
+              routes.MapRoute(//Xem chi tiết sản phẩm
+              name: "ViewProductDetail",
+             url: "san-pham/chi-tiet-{id}/",
+            defaults: new { controller = "Home", action = "ViewProductDetail" }
+             );
+
            /*Phần ProductCategory*/
                routes.MapRoute(//Hiển thị danh sách Product Category
                    name: "ManageProductCategory",
@@ -49,7 +62,8 @@ namespace ShopThoiTrang
 
 
             /*Phần Product*/
-             
+
+          
             routes.MapRoute(//Thêm mới
             name: "CreateProduct",
             url: "admin/quan-ly-product/them-moi/",
@@ -126,10 +140,16 @@ namespace ShopThoiTrang
       );
             //Mặc định
             routes.MapRoute(
-                name: "Default",
+                name: "Defaultffs",
                 url: "trang-chu/",
                 defaults: new { controller = "Home", action = "Index"}
             );
+           
+            routes.MapRoute(
+            name: "Default",
+            url: "{controller}/{action}",
+            defaults: new { controller = "Home", action = "Index" }
+        );
         }
     }
 }

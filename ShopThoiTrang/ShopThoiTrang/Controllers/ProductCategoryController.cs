@@ -44,6 +44,18 @@ namespace ShopThoiTrang.Controllers
             if (Session["login"] != null)
             {
                 String productCategoryName = Request["productCategoryName"];
+                Boolean checkNameCategory = true;
+                if(productCategoryName.Equals(""))
+                {
+                    checkNameCategory = false;
+                }
+                if (checkNameCategory == false)
+                {
+                    ViewBag.checkNameCategory=checkNameCategory;
+                    return View("Create");
+
+                }
+
                 ProductCategory pc = new ProductCategory();
                 pc.Name = productCategoryName;
                 db.ProductCategories.Add(pc);
@@ -75,10 +87,22 @@ namespace ShopThoiTrang.Controllers
         {
             if (Session["login"] != null)
             {
+                Boolean checkNameCategory = true;
                 String productCategoryName = Request["productCategoryName"];
-                ProductCategory pc = db.ProductCategories.Find(id);
-                pc.Name = productCategoryName;
-                db.Entry(pc).State = EntityState.Modified;
+                if(productCategoryName.Equals(""))
+                {
+                    checkNameCategory = false;
+                }
+                if(checkNameCategory==false)
+                {
+                    ViewBag.checkNameCategory = checkNameCategory;
+                    var pc = db.ProductCategories.Find(id);//tìm sản phẩm cần sữa
+                    ViewBag.pc = pc;
+                    return View("Edit");
+                }
+                ProductCategory pc1 = db.ProductCategories.Find(id);
+                pc1.Name = productCategoryName;
+                db.Entry(pc1).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

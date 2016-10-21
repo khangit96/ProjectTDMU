@@ -6,17 +6,17 @@ namespace ShopThoiTrang.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("User")]
-    public partial class User
+    [Table("Admin")]
+    public partial class Admin
     {
        [Key]
         public int id { get; set; }
-        public User(String username,String password)
+        public Admin(String username,String password)
         {
             this.username = username;
             this.password = password;
         }
-        public User()
+        public Admin()
         { }
         [StringLength(50)]
         public string username { get; set; }

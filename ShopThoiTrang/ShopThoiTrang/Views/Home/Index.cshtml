@@ -8,12 +8,43 @@
 
 <div class="products">
     <!-- Phần nội dung hiển thị sản phẩm -->
+     <div class="banner">
+         <section class="slider">
+             <div id="slider-demo" class="carousel slide" data-ride="carousel">
+                 <!-- Indicators -->
+                 <ol class="carousel-indicators">
+                     <li data-target="#slider-demo" data-slide-to="0" class="active"></li>
+                     <li data-target="#slider-demo" data-slide-to="1"></li>
+                     <li data-target="#slider-demo" data-slide-to="2"></li>
+                 </ol>
+                 <!-- Wrapper for slides -->
+                 <div class="carousel-inner">
+                     <div class="item active">
+                         <img src="~/Content/files/banner-sh0pnhi-vn-khai-truong-khuyen-mai.jpg" class="img-responsive" alt="logo shop">
+                        
+                     </div>
+                     <div class="item">
+                         <img src="~/Content/files/banner_floreal_787.jpg" class="img-responsive" alt="logo shop">
+                     </div>
+                     <div class="item">
+                         <img src="~/Content/files/slide1.jpg" class="img-responsive" alt="logo shop">
+                     </div>
+                 </div>
+                 <!-- Controls -->
+                 <a class="left carousel-control" href="#slider-demo" data-slide="prev">
+                     <span class="glyphicon glyphicon-chevron-left"></span>
+                 </a>
+                 <a class="right carousel-control" href="#slider-demo" data-slide="next">
+                     <span class="glyphicon glyphicon-chevron-right"></span>
+                 </a>
+             </div>
+         </section><!--end .slider-->
+
+     </div>
     <section class="content">
         <div class="container-fluid">
             <!-- Phần hiển thị danh sách sản phẩm -->
             <div class="product-lists">
-
-
                 <!-- Phần sản phẩm mới -->
                 <div class="row">
                     <!-- Dòng 1 -->
@@ -30,21 +61,21 @@
                         <!--Cột 1 Sản phẩm đầu tiên -->
                         <div class="image">
                             <!-- Phần hình ảnh sản phầm -->
-                            <a href="#">
-                                <img src="@Url.Content(@p.Image)" height="250" width="250" class="img-responsive" alt="No Image" />
+                            <a href="/san-pham/chi-tiet-@p.ID/">
+                                <img src="@Url.Content(@p.Image)" height="100" width="100" class="img-responsive" alt="No Image" />
                             </a>
                         </div>
                         <!-- Kết thúc phần hình ảnh -->
                         <div class="title">
                             <!-- Phần tiêu đề sản phẩm -->
-                            <h2><a href="#">@name</a></h2>
+                            <h2><a href="/san-pham/chi-tiet-@p.ID/">@name</a></h2>
                         </div>
                         <!-- Kết thúc phần tiêu đề-->
                         <div class="info">
                             <!-- Phần thông tin giá cả -->
                             <div class="pull-left">
                                 <del>
-                                    <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" />
+                                  <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
 
                                 </del>
                                 <ins>
@@ -54,9 +85,7 @@
                             <!-- Kết thúc phần thông tin giá -->
                             <div class="pull-right">
                                 <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-                                <a class="btn-cart" href="#">
-                                    <i class="glyphicon glyphicon-shopping-cart"></i>
-                                </a>
+
                             </div>
                             <!-- Kết thúc hiển thị giỏ hàng -->
                         </div>
@@ -85,14 +114,14 @@
                             <!--Cột 1 Sản phẩm đầu tiên -->
                             <div class="image">
                                 <!-- Phần hình ảnh sản phầm -->
-                                <a href="#">
-                                    <img src="@Url.Content(@p.Image)" height="250" width="250" class="img-responsive" alt="No Image" />
+                                <a href="/san-pham/chi-tiet-@p.ID/">
+                                    <img src="@Url.Content(@p.Image)" height="100" width="100" class="img-responsive" alt="No Image" />
                                 </a>
                             </div>
                             <!-- Kết thúc phần hình ảnh -->
                             <div class="title">
                                 <!-- Phần tiêu đề sản phẩm -->
-                                <h2><a href="#">@name</a></h2>
+                                <h2><a href="/san-pham/chi-tiet-@p.ID/">@name</a></h2>
                             </div>
                             <!-- Kết thúc phần tiêu đề-->
                             <div class="info">
@@ -110,9 +139,7 @@
                                 <!-- Kết thúc phần thông tin giá -->
                                 <div class="pull-right">
                                     <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-                                    <a class="btn-cart" href="#">
-                                        <i class="glyphicon glyphicon-shopping-cart"></i>
-                                    </a>
+                                   
                                 </div>
                                 <!-- Kết thúc hiển thị giỏ hàng -->
                             </div>

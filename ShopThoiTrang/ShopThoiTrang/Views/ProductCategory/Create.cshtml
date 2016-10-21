@@ -19,6 +19,13 @@
                 <label for="nameProduct" class="col-sm-2 col-sm-offset-2 control-label">Tên danh mục</label>
                 <div class="col-sm-5">
                     <input type="text" class="form-control" name="productCategoryName" placeholder="Tên danh mục">
+                    @if (ViewBag.checkNameCategory == false)
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Vui lòng nhập tên danh mục.</strong>
+                        </div>
+                    }
+
                 </div>
             </div>
           
