@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var productList = ViewBag.productList;
+    var count = 0;
+    IFormatProvider formatProvider =
+       new System.Globalization.CultureInfo("vi-VN");
+  
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Quản Lý Sản Phẩm</title>
+</head>
+<body>
+   <h1 style="text-align:center">Danh Sách Sản Phẩm</h1>
+    <p>
+        <a href="/admin/quan-ly-product/them-moi/">Thêm mới</a>
+    </p>
+    <table class="table table-bordered" style="text-align:center">
+        <tr>
+            <th style="text-align:center">
+                #
+            </th>
+            <th style="text-align:center">
+                Tên sản phẩm
+            </th>
+            <th style="text-align:center">
+                Giá
+            </th>
+            <th style="text-align:center">
+                Ảnh đại diện
+            </th>
+            <th style="text-align:center">
+                Bộ sưu tập
+            </th>
+            <th style="text-align:center">
+                Mô tả chi tiết
+            </th>
+            <th style="text-align:center">
+                Sản phẩm mới
+            </th>
+            <th style="text-align:center">
+                Sản phẩm giảm giá
+            </th>
+            <th style="text-align:center">
+                Giá giảm
+            </th>
+            <th style="text-align:center">
+                Tuỳ chọn
+            </th>
+        </tr>
+
+        @foreach (var product in productList)
+        {
+            count++;
+            var db = new ShopThoiTrang.Models.DBShop();
+            var parentName = db.ProductCategories.Find(product.ParentID).Name;
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @product.Name
+
+                </td>
+                <td>
+                    <span>@product.Price.ToString("C", formatProvider)</span>
+                </td>
+                <td>
+                    <img src="@Url.Content(@product.Image)" height="50" width="50" alt="Không có ảnh">
+                </td>
+                <td>
+                   @parentName
+                </td>
+                <td>
+                    @Html.Raw(@product.Descriptions)
+                </td>
+                <td>
+                    @product.TopNew
+                </td>
+                <td>
+                    @product.TopDecrease
+                </td>
+                <td>
+                    <span>@product.DecreasePrice.ToString("C", formatProvider)</span>
+
+                </td>
+
+                <td>
+                    <a href="/admin/quan-ly-product/chinh-sua/@product.ID/">Chỉnh Sửa  </a><a href="/admin/quan-ly-product/xoa/@product.ID/">Xoá</a>
+
+                </td>
+            </tr>  
+           
+        }
+    </table>
+    
+</body>
+</html>

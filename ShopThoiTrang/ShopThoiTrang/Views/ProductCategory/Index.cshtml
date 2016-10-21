@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var productCategoryList = ViewBag.productCategoryList;
+    var count = 0;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Danh Mục Sản Phẩm</title>
+</head>
+<body>
+    <h1 style="text-align:center">Danh Mục Sản Phẩm</h1>
+    <p>
+        <a href="/admin/quan-ly-product-category/them-moi/">Thêm mới</a>
+    </p>
+    <table class="table table-bordered" style="text-align:center">
+        <tr>
+            <th style="text-align:center">
+                #
+            </th>
+            <th style="text-align:center"> Tên danh mục</th>
+
+            <th style="text-align:center">
+                Tuỳ chọn
+            </th>
+        </tr>
+
+        @foreach (var pc in productCategoryList)
+        {
+            count++;
+            <tr>
+                <td>
+                    @count
+                </td>
+                <td>
+                    @pc.Name
+
+                </td>
+
+                <td>
+                    <a href="/admin/quan-ly-product-category/chinh-sua/@pc.ID/">Chỉnh Sửa </a><a href="/admin/quan-ly-product-category/xoa/@pc.ID/">Xoá</a>
+
+                </td>
+            </tr>
+
+        }
+    </table>
+
+</body>
+</html>
