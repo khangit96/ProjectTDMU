@@ -14,6 +14,20 @@ namespace ShopThoiTrang
             /*Định nghĩa route*/
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            /*Phần Giỏ Hàng*/
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+              name: "ViewCart",
+              url: "san-pham/gio-hang",
+              defaults: new { controller = "Cart", action = "Index" }
+
+               );
+           routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+           name: "AddToCart",
+           url: "san-pham/gio-hang/them/{id}/",
+           defaults: new { controller = "Cart", action = "AddToCart" }
+
+            );
+
             /*Phần Home*/
             routes.MapRoute(//Hiển thị danh sách Product Category
                 name: "ViewByProductCategory",

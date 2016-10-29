@@ -2,6 +2,7 @@
 @{
     Layout = null;
     var productCategoryList = new ShopThoiTrang.Models.DBShop().ProductCategories.ToList();
+    var cartCount = Session["cart"] as List<ShopThoiTrang.Models.Cart>;
 }
 
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!--Css-->
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/jquery.spzoom.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="https://apis.google.com/js/platform.js" async defer>
         { lang: 'vi' }
@@ -83,7 +85,17 @@
                     <!-- Phẩn hiển thị giỏ hàng -->
                     <div class="col-sm-3 pull-right">
                         <div class="shopping-cart">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>  <a href="#">GIỎ HÀNG (5)</a>
+                            <i class="glyphicon glyphicon-shopping-cart"></i> 
+                            @if (cartCount != null)
+                            {
+                                     <a href="/san-pham/gio-hang/"> GIỎ HÀNG (@cartCount.Count())</a>
+                             }
+                             else
+                            {
+                              <a href="/san-pham/gio-hang/"> GIỎ HÀNG (0)</a>
+
+                            }
+                           
                         </div>
 
                     </div>
@@ -493,10 +505,72 @@
     </header>
     <!-- Kết thúc header -->
     <!-- Phần footer -->
-    <footer class="footer">
-       
-    </footer>
-    <!--Kết thúc .footer-->
+    <!--Footer-->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <div class="footer" id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3>KShop </h3>
+                        <ul>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                            <li> <a href="#"> Lorem Ipsum </a> </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Lorem Ipsum </h3>
+                        <ul>
+                            <li>
+                                <div class="input-append newsletter-box text-center">
+                                    <input type="text" class="full text-center" placeholder="Email ">
+                                    <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="social">
+                            <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
+                            <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+        <!--/.footer-->
+
     <script src="~/Content/main.js"></script>
     <script src="~/Content/jquery-1.11.1.min.js"></script>
     <script src="~/Content/bootstrap.min.js"></script>

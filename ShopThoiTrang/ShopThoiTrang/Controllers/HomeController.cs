@@ -55,8 +55,28 @@ namespace ShopThoiTrang.Controllers
 
         //Hàm xem chi tiết sản phẩm
         public ActionResult ViewProductDetail(int id)
-        {
-            ViewBag.product = db.Products.Find(id);
+        {  
+            var product=db.Products.Find(id);
+            ViewBag.product = product;
+            var parentId =product.ParentID;
+            ViewBag.productListRelate = db.Products.Where(x => x.ParentID == parentId).ToList();
+
+            //Kiểm tra nếu sản phẩm đã được thêm vào giỏ hàng
+            string checkShowAddToCart = "false";
+            List<Cart> listCart = new List<Cart>();
+            if (Session["cart"]!= null) 
+            {
+                listCart = Session["cart"] as List<Cart>;
+                foreach (var cart in listCart)
+                {
+                    if (cart.product.ID==id)
+                    {
+                        checkShowAddToCart ="true";
+                        break;
+                    }
+                }
+            }
+            ViewBag.checkShowAddToCart = checkShowAddToCart;
             return View();
         }
 

@@ -3,70 +3,149 @@
     ViewBag.Title = "ViewProductDetail";
     Layout = "~/Views/Shared/LayoutParentHome.cshtml";
     var product = ViewBag.product;
+    var parentName = new ShopThoiTrang.Models.DBShop().ProductCategories.Find(product.ParentID).Name;
+    var productListRelate = ViewBag.productListRelate;
     IFormatProvider formatProvider =
         new System.Globalization.CultureInfo("vi-VN");
 }
 
 <div class="products">
-            <div class="item-container">
-                <div class="container">
-                    <div class="col-md-6">
-                        <div class="product col-md-12" >
 
-                            <img src="@Url.Content(@product.Image)"  class="img-responsive" alt="No Image" />
-                        </div>
+         <!--Phần thông tin sản phẩm-->
+         <div class="row">
+             <div class="item-container">
+                 <div class="container">
+                     <div class="col-md-6">
+                         <div class="product col-md-12">
+                             <a href="@Url.Content(@product.Image)" data-spzoom>
+                                 <img src="@Url.Content(@product.Image)" class="img-responsive" alt="No Image" />
 
-                        <div class="container service1- col-sm-2 col-md-2 pull-left">
-                                <a id="item-1" class="service1-item">
-                                </a>
-                                <a id="item-2" class="service1-item">
-                                </a>
-                                <a id="item-3" class="service1-item">
-                                </a>
-                        </div>
-                    </div>
+                             </a>
+                         </div>
 
-                    <div class="col-md-7">
-                        <div class="product-title">Corsair GS600 600 Watt PSU</div>
-                        <div class="product-desc">The Corsair Gaming Series GS600 is</div>
-                        <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
-                        <hr>
-                        <div class="product-price">$ 1234.00</div>
-                        <div class="product-stock">In Stock</div>
-                        <hr>
-                        <div class="btn-group cart">
-                            <button type="button" class="btn btn-success">
-                                Thêm Vào Giỏ Hàng
-                            </button>
-                        </div>
+                         <div class="container service1- col-sm-2 col-md-2 pull-left">
+                             <a id="item-1" class="service1-item">
+                             </a>
+                             <a id="item-2" class="service1-item">
+                             </a>
+                             <a id="item-3" class="service1-item">
+                             </a>
+                         </div>
+                     </div>
+
+                     <div class="col-md-6">
+                         <div class="product-title">Tên sản phẩm: @parentName</div>
+                         <div class="product-title">Kiểu: @product.Name</div>
+                         <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
+                         <hr>
+                         <div class="product-price">Giá: @product.Price.ToString("C", formatProvider)</div>
+                         <div class="product-stock"><del>Giảm giá:@product.DecreasePrice.ToString("C", formatProvider)</del></div>
+                         <hr>
+                         <div class="btn-group cart">
+                             
+                            
+                             @if (ViewBag.checkShowAddToCart =="false")
+                             {
+                                 <a href="/san-pham/gio-hang/them/@product.ID/" class="btn btn-primary" role="button">Thêm vào giỏ hàng</a>
+                             }
+                             else
+                             {
+                                 <a href="/san-pham/gio-hang/" class="btn btn-primary" role="button">Xem giỏ hàng</a>
+
+                             }
+                          
+                         </div>
+
+                     </div>
+                 </div>
+             </div>
+             <div class="col-md-6 product-info">
+                 <ul id="myTab" class="nav nav-tabs nav_tabs">
+
+                     <li class="active"><a href="#service-one" data-toggle="tab">Mô tả</a></li>
+                     <li><a href="#service-two" data-toggle="tab">Thông tin sản phẩm</a></li>
+                     <li><a href="#service-three" data-toggle="tab">Nhận xét</a></li>
+
+                 </ul>
+                 <div id="myTabContent" class="tab-content">
+                     <div class="tab-pane fade in active" id="service-one">
+
+                     </div>
+                     <div class="tab-pane fade" id="service-two">
                         
+
+                     </div>
+                     <div class="tab-pane fade" id="service-three">
+                         <section class="container product-info">Mô tả</section>
+                     </div>
+                 </div>
+                 <hr>
+             </div>
+         </div>
+
+    <!--Phần Sản Phẩm Liên Quan-->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- Phần hiển thị danh sách sản phẩm -->
+            <div class="product-lists">
+
+
+                <!-- Phần sản phẩm mới -->
+                <div class="row">
+                    <!-- Dòng 1 -->
+                    <div class="col-sm-12">
+                        <p class="box-title">Sản Phẩm Liên Quan</p>
                     </div>
+                </div>
+                <div class="row">
+                    
+                  
+                    @foreach (var p in productListRelate)
+                    {
+                        var name = new ShopThoiTrang.Models.DBShop().ProductCategories.Find(p.ParentID).Name;
+
+                        <div class="col-sm-3 product-item">
+                            <!--Cột 1 Sản phẩm đầu tiên -->
+                            <div class="image">
+                                <!-- Phần hình ảnh sản phầm -->
+                                <a href="/san-pham/chi-tiet-@p.ID/">
+                                    <img src="@Url.Content(@p.Image)" height="100" width="100" class="img-responsive" alt="No Image" />
+                                </a>
+                            </div>
+                            <!-- Kết thúc phần hình ảnh -->
+                            <div class="title">
+                                <!-- Phần tiêu đề sản phẩm -->
+                                <h2><a href="/san-pham/chi-tiet-@p.ID/">@name</a></h2>
+                            </div>
+                            <!-- Kết thúc phần tiêu đề-->
+                            <div class="info">
+                                <!-- Phần thông tin giá cả -->
+                                <div class="pull-left">
+                                    <del>
+                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
+
+                                    </del>
+                                    <ins>
+                                        <span>@p.Price.ToString("C", formatProvider)</span>
+                                    </ins>
+                                </div>
+                                <!-- Kết thúc phần thông tin giá -->
+                                <div class="pull-right">
+                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
+
+                                </div>
+                                <!-- Kết thúc hiển thị giỏ hàng -->
+                            </div>
+                        </div>
+                    <!--Kết thúc sản phẩm đầu tiên-->
+                    }
+
                 </div>
             </div>
-            <div class="col-md-6 product-info">
-                    <ul id="myTab" class="nav nav-tabs nav_tabs">
-
-                        <li class="active"><a href="#service-one" data-toggle="tab">Mô tả</a></li>
-                        <li><a href="#service-two" data-toggle="tab">Thông tin sản phẩm</a></li>
-                        <li><a href="#service-three" data-toggle="tab">Nhận xét</a></li>
-
-                    </ul>
-                    <div id="myTabContent" class="tab-content">
-                        <div class="tab-pane fade in active" id="service-one">
-                            ff
-                            <section class="container product-info">fgd</section>
-
-                        </div>
-                        <div class="tab-pane fade" id="service-two">
-                            fdgfd
-                            <section class="container">gdfd</section>
-
-                        </div>
-                        <div class="tab-pane fade" id="service-three">
-                            ffd
-                        </div>
-                    </div>
-                    <hr>
-                </div>
+            <!--Kết thúc container-->
+    </section>
    
+
+    <!--Kết thúc phần hiển thị sản phẩm-->
+
 </div>
