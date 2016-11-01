@@ -123,7 +123,7 @@ p{
 	background: white!important;
 }
 .main-nav li a:hover{
-	color: #428BCA;
+	color: #FA4904;
     margin-left:10px;
 	//border-radius: 0px;
 	border-color: #F2532F;
@@ -150,7 +150,7 @@ p{
 padding:10px;
 }
 .text-animate a{
-    color:red;
+    color:#FA4904;
 
 }
 /*Phần danh mục sản phẩm*/
@@ -351,8 +351,27 @@ product-item .btn-cart:hover{
     margin-top:80px;
 }
 .shopping-cart{
-    margin-top:80px;
+    margin-left:50px;
+}
+.shopping-cart .step a{
+    font-weight:bold;
+    color:#60A1CB;
+}
+.shopping-cart .content{
+    margin-top:20px;
+}
+.shopping-cart .content a{
+    color:#60A1CB;
+    font-size:15px;
+}
 
+.shopping-cart .content p{
+    font-size:20px;
+    text-align:center;
+    margin-top:80px;
+}
+.shopping-cart .content .checkout{
+    margin-left:100px;
 }
 /*Phần footer*/
 .footer

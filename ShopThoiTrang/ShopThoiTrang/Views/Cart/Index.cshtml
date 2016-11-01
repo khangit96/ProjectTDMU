@@ -3,99 +3,100 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayoutParentHome.cshtml";
     var cartList = ViewBag.cartList;
+    var count = 1;
+    var totalPrice = 0;
+    IFormatProvider formatProvider =
+        new System.Globalization.CultureInfo("vi-VN");
 }
 
 <div class="shopping-cart">
-    <div class="container">
+    <div class="step">
         <div class="row">
-            <div class="col-xs-12">
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <h5><span class="glyphicon glyphicon-shopping-cart"></span>Giỏ Hàng</h5>
-                                </div>
-                                <div class="col-xs-6">
-                                    <button type="button" class="btn btn-primary btn-sm btn-block">
-                                        <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <img class="img-responsive" src="http://placehold.it/100x70">
-                            </div>
-                            <div class="col-xs-4">
-                                <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="col-xs-6 text-right">
-                                    <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-                                </div>
-                                <div class="col-xs-4">
-                                    <input type="text" class="form-control input-sm" value="1">
-                                </div>
-                                <div class="col-xs-2">
-                                    <button type="button" class="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-trash"> </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-xs-2">
-                                <img class="img-responsive" src="http://placehold.it/100x70">
-                            </div>
-                            <div class="col-xs-4">
-                                <h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="col-xs-6 text-right">
-                                    <h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
-                                </div>
-                                <div class="col-xs-4">
-                                    <input type="text" class="form-control input-sm" value="1">
-                                </div>
-                                <div class="col-xs-2">
-                                    <button type="button" class="btn btn-link btn-xs">
-                                        <span class="glyphicon glyphicon-trash"> </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="text-center">
-                                <div class="col-xs-9">
-                                    <h6 class="text-right">Added items?</h6>
-                                </div>
-                                <div class="col-xs-3">
-                                    <button type="button" class="btn btn-default btn-sm btn-block">
-                                        Update cart
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="row text-center">
-                            <div class="col-xs-9">
-                                <h4 class="text-right">Total <strong>$50.00</strong></h4>
-                            </div>
-                            <div class="col-xs-3">
-                                <button type="button" class="btn btn-success btn-block">
-                                    Checkout
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-6">
+                <a href="fsf" class="glyphicon glyphicon-ok-sign"> 1 XEM GIỎ HÀNG</a>
+            </div>
+            <div class="col-md-6">
+                <a href="sf" class="glyphicon glyphicon-ok-sign"> 2 THANH TOÁN</a>
             </div>
         </div>
     </div>
+    <form method="post" action="@Url.Action("UpdateCart","Cart")">
+            <div class="content">
+                @if(Session["cart"]!=null)
+                {
+             
+                     <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table table-bordered" style="text-align:center">
+                                <thead>
+                                    <tr style="font-size:17px">
+                                        <td>STT</td>
+                                        <td>Ảnh</td>
+                                        <td>Sản phẩm</td>
+                                        <td>Số lượng</td>
+                                        <td>Giá(VNĐ) </td>
+                                        <td>Tuỳ chọn</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                         
+                                    @foreach (var cart in cartList)
+                                    {
+                                        var name = new ShopThoiTrang.Models.DBShop().ProductCategories.Find(cart.product.ParentID).Name;
+                                        totalPrice += cart.totalPrice;
+                               
+                                        <tr>
+                                            <td class="text-center" style="text-align:center">@count</td>
+
+                                            <td>
+                                                <a href="/san-pham/chi-tiet-@cart.product.ID/">
+                                                    <img src="@Url.Content(@cart.product.Image)" height="50" width="50" class="img-responsive" alt="No Image" />
+                                                </a>
+                                            </td>
+                                            <td><a href="/san-pham/chi-tiet-@cart.product.ID/">@name - @cart.product.Name</a></td>
+                                            <td>
+                                                <div class="col-md-4">
+                                                    <input class="form-control" name="quantity" value="@cart.quantity" type="text">
+
+                                                </div>
+                                            </td>
+                                            <td style="color: #CC3300">@cart.totalPrice.ToString("C", formatProvider)</td>
+                                            <td><a href="#" class="glyphicon glyphicon-remove" style="color:red"></a></td>
+                                        </tr>
+                                        count++;
+                                    }
+
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                     <div class="row">
+                        <div class="col-md-7">
+                           Tổng số tiền:<span style="color:red;font-size:18px">@totalPrice.ToString("C", formatProvider)</span>
+                        </div>
+                         </div>
+                  
+                    <div class="row">
+                        <div class="container col-md-offset-8">
+                            <button type="button" onclick="location.href='@Url.Action("Index", "Cart")';return false;" >Thanh toán</button>
+                            <input type="submit" value="Cập nhật" />
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+                  <p> Không có sản phẩm nào trong giỏ hàng </p>
+                }
+                <div class="col-md-3">
+                    <button type="button" style="color: white; background-color: #4E5051;padding:5px" onclick="location.href='/';return false;">Tiếp tục mua hàng</button>
+                </div>
+            </div>
+ </form>
 </div>

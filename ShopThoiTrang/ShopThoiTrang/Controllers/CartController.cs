@@ -18,8 +18,20 @@ namespace ShopThoiTrang.Controllers
         public ActionResult AddToCart(int id)
         {
             Product product = new DBShop().Products.Find(id);
+            int quantity = Int16.Parse(Request["quantity"]);
             ViewBag.product = product;
-            Cart cart = new Cart(product,2,50000);
+
+            //Nếu sản phẩm giảm giá
+            decimal totalPrice;
+            if (product.TopDecrease == "true")
+            {
+                totalPrice = quantity * (Decimal)product.DecreasePrice;
+            }
+            else
+            {
+                totalPrice = quantity * (Decimal)product.Price;
+            }
+            Cart cart = new Cart(product, quantity, totalPrice);
             if (Session["cart"] != null)
             {
                 List<Cart> cartList = Session["cart"] as List<Cart>;
@@ -34,7 +46,34 @@ namespace ShopThoiTrang.Controllers
 
             }
             return RedirectToAction("Index");
-         
+        }
+
+        //Cập nhật giỏ hàng
+        public ActionResult UpdateCart()
+        {
+            string[] quantities =Request.Form.GetValues("quantity");
+            List < Cart >cartList= Session["cart"] as List<Cart>;
+            for (int i = 0; i < cartList.Count;i++ )
+            {
+                //Cập nhật lại số lượng
+                cartList[i].quantity = Int16.Parse(quantities[i]);
+                //Cập nhật lại giá
+                  Product product=cartList[i].product;
+                  int quantity=cartList[i].quantity;
+                  decimal totalPrice;
+                  if (product.TopDecrease == "true")
+                   {
+                       totalPrice = quantity * (Decimal)product.DecreasePrice;
+                  }
+                  else
+                  {
+                      totalPrice = quantity * (Decimal)product.Price;
+                  }
+                  cartList[i].totalPrice = totalPrice;
+            }
+            Session["cart"] = cartList;
+             return RedirectToAction("Index");
+             
         }
 	}
 }

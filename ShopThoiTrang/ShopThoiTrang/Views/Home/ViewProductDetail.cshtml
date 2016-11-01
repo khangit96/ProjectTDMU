@@ -8,7 +8,6 @@
     IFormatProvider formatProvider =
         new System.Globalization.CultureInfo("vi-VN");
 }
-
 <div class="products">
 
          <!--Phần thông tin sản phẩm-->
@@ -18,7 +17,7 @@
                      <div class="col-md-6">
                          <div class="product col-md-12">
                              <a href="@Url.Content(@product.Image)" data-spzoom>
-                                 <img src="@Url.Content(@product.Image)" class="img-responsive" alt="No Image" />
+                                 <img id="imgZoom" src="@Url.Content(@product.Image)" class="img-responsive" alt="No Image" onmousemove="zoomIn(event)" onmouseout="zoomOut()" />
 
                              </a>
                          </div>
@@ -46,7 +45,14 @@
                             
                              @if (ViewBag.checkShowAddToCart =="false")
                              {
-                                 <a href="/san-pham/gio-hang/them/@product.ID/" class="btn btn-primary" role="button">Thêm vào giỏ hàng</a>
+                                <form method="post" action="@Url.Action("AddToCart", "Cart", new {id=@product.ID})">
+                                    <div class="quantity">
+                                        <input type="text" name="quantity" value="1" />
+                                    </div>
+                                    <input type="submit" class="btn btn-primary" value="Thêm vào giỏ hàng"/>
+                                </form>
+                                 
+                              
                              }
                              else
                              {

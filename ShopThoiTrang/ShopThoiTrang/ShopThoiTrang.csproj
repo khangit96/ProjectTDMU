@@ -1151,6 +1151,7 @@
     <Content Include="Content\html5shiv.min.js" />
     <Content Include="Content\ie8-responsive-file-warning.js" />
     <Content Include="Content\jquery-1.11.1.min.js" />
+    <Content Include="Content\jquery.spritezoom.js" />
     <Content Include="Content\jquery.spzoom.js" />
     <Content Include="Content\lumino.glyphs.js" />
     <Content Include="Content\main.js" />
@@ -1224,6 +1225,7 @@
     <Content Include="Views\Home\ViewByProductCategory.cshtml" />
     <Content Include="Views\Home\ViewProductDetail.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\UpdateCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
