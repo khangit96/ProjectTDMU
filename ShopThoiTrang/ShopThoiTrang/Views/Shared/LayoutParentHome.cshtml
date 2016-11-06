@@ -17,10 +17,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!--Css-->
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="https://apis.google.com/js/platform.js" async defer>
         { lang: 'vi' }
     </script>
+    <script src="~/Content/jquery-1.11.1.min.js"></script>
+
 
     <title>KShop</title>
 </head>
@@ -53,6 +56,26 @@
     js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=870387233090331";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+    <!--Btn top-->
+    <script>
+        jQuery(document).ready(function ($) {
+            if ($(".btn-top").length > 0) {
+                $(window).scroll(function () {
+                    var e = $(window).scrollTop();
+                    if (e > 300) {
+                        $(".btn-top").show()
+                    } else {
+                        $(".btn-top").hide()
+                    }
+                });
+                $(".btn-top").click(function () {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    })
+                })
+            }
+        });
+    </script>
     <header>
         <!-- Phần phía trên cùng -->
       
@@ -140,7 +163,7 @@
                     
                 </div>
             <div class="text-animate">
-               <a> <marquee>CHÀO MỪNG BẠN ĐẾN VỚI WEBSITE.NHÂN DỊP KHAI TRƯƠNG,GIẢM 50% KHI MUA CÁC SẢN PHẨM THỜI TRANG.</marquee></a>
+               <a> <marquee>NHÂN DỊP KHAI TRƯƠNG,GIẢM 50% KHI MUA CÁC SẢN PHẨM THỜI TRANG.</marquee></a>
 
             </div>
                 <!--kết thúc .main-nav-->
@@ -173,12 +196,12 @@
                                 </div>
                                 
                                 <div class="categories">
-                                    <p>Hổ Trợ Khách Hàng</p>
+                                   <!--- <p>Hổ Trợ Khách Hàng</p> -->
 
                                     <ul></ul>
                                 </div>
                                 <div class="categories">
-                                    <p>Thống Kê Truy Cập</p>
+                                    <!--- <p>Thống Kê Truy Cập</p>
 
                                     <ul>
                                         <li><a class="glyphicon glyphicon-user"></a>  Đang truy cập:<b>16</b></li>
@@ -186,7 +209,7 @@
                                         <li><a class="glyphicon glyphicon-time"></a> Tháng hiện tại:<b>20000</b></li>
                                         <li><a class="glyphicon glyphicon-globe" href="#"></a> Tổng:<b>5758490</b></li>
 
-                                    </ul>
+                                    </ul> -->
                                 </div>
                                 <!-- Phần hiển thị fanpage facebook -->
                                 <div class="fanpage">
@@ -218,283 +241,9 @@
 
                                 </div>
                                 <div class="topUser">
-                                    <p>Top Người Dùng</p>
-                                    <div class="product">
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/v1.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Váy Nữ</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/polo.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Áo thun nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/qt1.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Quần tây nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/ak1.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Áo khoát nữ</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/Watchnam1.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Đồng hồ nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/WatchNam2.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Đồng hồ nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/kaki1.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Quần kaki nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <!--Cột 1 Sản phẩm đầu tiên -->
-                                            <div class="image">
-                                                <!-- Phần hình ảnh sản phầm -->
-                                                <a href="#">
-                                                    <img src="~/Content/files/ĐHN3.jpg" height="100" width="100" class="img-responsive" alt="No Image" />
-                                                </a>
-                                            </div>
-                                            <!-- Kết thúc phần hình ảnh -->
-                                            <div class="title">
-                                                <!-- Phần tiêu đề sản phẩm -->
-                                                <h2><a href="">Đồng hồ nam</a></h2>
-                                            </div>
-                                            <!-- Kết thúc phần tiêu đề-->
-                                            <div class="info">
-                                                <!-- Phần thông tin giá cả -->
-                                                <div class="pull-left">
-                                                    <del>
-                                                        <!--  <img src="~/Content/files/new.png" class="img-responsive" width="50" height="50" /> -->
-
-                                                    </del>
-                                                    <ins>
-                                                        <span>500.000vnđ</span>
-                                                    </ins>
-                                                </div>
-                                                <!-- Kết thúc phần thông tin giá -->
-                                                <div class="pull-right">
-                                                    <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-
-                                                </div>
-                                                <!-- Kết thúc hiển thị giỏ hàng -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                 
+                                  <!--  <p>Top Người Dùng</p> -->
+                                    
+                                  
                                 </div>                               
                                   
                             </div>
@@ -506,70 +255,187 @@
     <!-- Phần footer -->
     <!--Footer-->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <div class="footer" id="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3>KShop </h3>
-                        <ul>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Lorem Ipsum </h3>
-                        <ul>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Lorem Ipsum </h3>
-                        <ul>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Lorem Ipsum </h3>
-                        <ul>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                            <li> <a href="#"> Lorem Ipsum </a> </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                        <h3> Lorem Ipsum </h3>
-                        <ul>
-                            <li>
-                                <div class="input-append newsletter-box text-center">
-                                    <input type="text" class="full text-center" placeholder="Email ">
-                                    <button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="social">
-                            <li> <a href="#"> <i class=" fa fa-facebook">   </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-twitter">   </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-google-plus">   </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-pinterest">   </i> </a> </li>
-                            <li> <a href="#"> <i class="fa fa-youtube">   </i> </a> </li>
-                        </ul>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!--footer-->
+    <footer class="footer1">
+        <div class="container">
+            <div class="row">
+                <!-- row -->
+
+                <div class="col-lg-3 col-md-3">
+                    <!-- widgets column left -->
+                    <ul class="list-unstyled clear-margins">
+                        <!-- widgets -->
+
+                        <li class="widget-container widget_nav_menu">
+                            <!-- widgets list -->
+
+                            <h1 class="title-widget">Giới Thiệu</h1>
+
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Giới thiệu Kshop.Vn</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Đối tác</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Văn hoá-Sự kiện</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Chính Sách</a></li>
+
+
+
+
+                               
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+                </div><!-- widgets column left end -->
+
+
+
+                <div class="col-lg-3 col-md-3">
+                    <!-- widgets column left -->
+
+                    <ul class="list-unstyled clear-margins">
+                        <!-- widgets -->
+
+                        <li class="widget-container widget_nav_menu">
+                            <!-- widgets list -->
+
+                            <h1 class="title-widget">Dịch Vụ</h1>
+
+                            <ul>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Đổi trả hàng</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Khách hàng vip</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Thanh toán</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Vận chuyển</a></li>
+
+
+
+                            
+
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+                </div><!-- widgets column left end -->
+
+
+
+                <div class="col-lg-3 col-md-3">
+                    <!-- widgets column left -->
+
+                    <ul class="list-unstyled clear-margins">
+                        <!-- widgets -->
+
+                        <li class="widget-container widget_nav_menu">
+                            <!-- widgets list -->
+
+                            <h1 class="title-widget">Chi nhánh</h1>
+
+                            <ul>
+
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Quận 1,TP.HCM</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Quận 3,TP.HCM</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Quận Bình Thạnh,TP.HCM</a></li>
+                                <li><a href="#"><i class="fa fa-angle-double-right"></i> Quận Phú Nhuận,TP.HCM</a></li>
+                              
+                            </ul>
+
+                        </li>
+
+                    </ul>
+
+
+                </div><!-- widgets column left end -->
+
+
+                <div class="col-lg-3 col-md-3">
+                    <!-- widgets column center -->
+
+
+
+                    <ul class="list-unstyled clear-margins">
+                        <!-- widgets -->
+
+                        <li class="widget-container widget_recent_news">
+                            <!-- widgets list -->
+
+                            <h1 class="title-widget">Thông Tin Liên Hệ </h1>
+
+                            <div class="footerp">
+
+                                <h2 class="title-median">Toà nhà Ata,Quận 1,TP.HCM</h2>
+                                <p><b>Email :</b> <a href="mailto:info@webenlance.com">kshop@gmail.com</a></p>
+                                <p>
+                                    <b>Điện thoại </b>
+                                    <b style="color:#ffc106;">(8h sáng-10h tối):</b> 
+                                     0976671809,01695821150
+                                </p>
+
+                                
+                            </div>
+
+                            <div class="social-icons">
+
+                                <ul class="nomargin">
+
+                                    <a href="https://www.facebook.com/bootsnipp"><i class="fa fa-facebook-square fa-3x social-fb" id="social"></i></a>
+                                    <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter-square fa-3x social-tw" id="social"></i></a>
+                                    <a href="https://plus.google.com/+Bootsnipp-page"><i class="fa fa-google-plus-square fa-3x social-gp" id="social"></i></a>
+                                    <a href="mailto:bootsnipp@gmail.com"><i class="fa fa-envelope-square fa-3x social-em" id="social"></i></a>
+
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--header-->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="copyright">
+                        © 2016 Kshop.vn
+
                     </div>
                 </div>
-                <!--/.row-->
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    <div class="design">
+                        <a href="#">Tiếng Anh </a>
+                    </div>
+                </div>
             </div>
-            <!--/.container-->
         </div>
-        <!--/.footer-->
+    </div>
+    <script>
+        $(document).ready(function () {
 
+            //Check to see if the window is top if not then display button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.btn-top').fadeIn();
+                } else {
+                    $('.btn-top').fadeOut();
+                }
+            });
+
+            //Click event to scroll to top
+            $('.btn-top').click(function () {
+                $('html, body').animate({ scrollTop: 0 }, 800);
+                return false;
+            });
+
+        });
+    </script>
+    <div class="footer">  <a id="btn-top" class="fa fa-arrow-circle-up btn-top" href="#" title="Top" style="display: inline;"></a> </div>
     <script src="~/Content/main.js"></script>
     <script src="~/Content/jquery-1.11.1.min.js"></script>
     <script src="~/Content/bootstrap.min.js"></script>

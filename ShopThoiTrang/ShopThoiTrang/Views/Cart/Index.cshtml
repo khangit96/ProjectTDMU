@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayoutParentHome.cshtml";
-    var cartList = ViewBag.cartList;
+    var cartList = ViewBag.cartList ;
     var count = 1;
     var totalPrice = 0;
     IFormatProvider formatProvider =
@@ -22,7 +22,7 @@
     </div>
     <form method="post" action="@Url.Action("UpdateCart","Cart")">
             <div class="content">
-                @if(Session["cart"]!=null)
+                @if (Session["cart"] != null && ViewBag.empty!="empty")
                 {
              
                      <div class="row">
@@ -63,8 +63,8 @@
 
                                                 </div>
                                             </td>
-                                            <td style="color: #CC3300">@cart.totalPrice.ToString("C", formatProvider)</td>
-                                            <td><a href="#" class="glyphicon glyphicon-remove" style="color:red"></a></td>
+                                            <td style="color: #CC3300">@cart.product.Price.ToString("C", formatProvider)</td>
+                                            <td><a href="@Url.Action("DeleteCart", "Cart", new { id=@cart.ID})" class="glyphicon glyphicon-remove" style="color:red"></a></td>
                                         </tr>
                                         count++;
                                     }
@@ -84,8 +84,8 @@
                   
                     <div class="row">
                         <div class="container col-md-offset-8">
-                            <button type="button" onclick="location.href='@Url.Action("Index", "Cart")';return false;" >Thanh toán</button>
-                            <input type="submit" value="Cập nhật" />
+                            <button type="button" onclick="location.href='@Url.Action("Index", "Cart")';return false;" style="background-color: #EC663D; color: white; padding: 5px; " >Thanh toán</button>
+                            <input type="submit" style="color: white; background-color: #4E5051;padding:5px" value="Cập nhật" />
 
                         </div>
                     </div>

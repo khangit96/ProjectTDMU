@@ -13,6 +13,15 @@ namespace ShopThoiTrang.Controllers
         public ActionResult Index()
         {
             ViewBag.cartList = Session["cart"] as List<Cart>;
+            if(Session["cart"]!=null)
+            {
+                if ((Session["cart"] as List<Cart>).Count == 0)
+                {
+                    //Giỏ hàng rỗng
+                    ViewBag.empty = "empty";
+                }
+            }
+           
             return View();
         }
         public ActionResult AddToCart(int id)
@@ -20,6 +29,8 @@ namespace ShopThoiTrang.Controllers
             Product product = new DBShop().Products.Find(id);
             int quantity = Int16.Parse(Request["quantity"]);
             ViewBag.product = product;
+            List<Cart> cartList ;
+            Cart cart;
 
             //Nếu sản phẩm giảm giá
             decimal totalPrice;
@@ -31,20 +42,21 @@ namespace ShopThoiTrang.Controllers
             {
                 totalPrice = quantity * (Decimal)product.Price;
             }
-            Cart cart = new Cart(product, quantity, totalPrice);
             if (Session["cart"] != null)
-            {
-                List<Cart> cartList = Session["cart"] as List<Cart>;
-                cartList.Add(cart);
-                Session["cart"] = cartList;
+            {  
+                cartList = Session["cart"] as List<Cart>;
+                cart = new Cart(cartList.Count,product, quantity, totalPrice);
+
             }
             else
             {
-                List<Cart> cartList = new List<Cart>();
-                cartList.Add(cart);
-                Session["cart"] =cartList;
+                 cartList = new List<Cart>();
+                 cart = new Cart(0,product, quantity, totalPrice);
+
 
             }
+            cartList.Add(cart);
+            Session["cart"] = cartList;
             return RedirectToAction("Index");
         }
 
@@ -73,7 +85,20 @@ namespace ShopThoiTrang.Controllers
             }
             Session["cart"] = cartList;
              return RedirectToAction("Index");
-             
+        }
+
+        //Xoá giỏ hàng
+        public ActionResult DeleteCart(int id)
+        {
+            List<Cart> cartList = Session["cart"] as List<Cart>;
+                cartList.RemoveAt(id);
+                for (int i = 0; i < cartList.Count; i++)
+                {
+                    cartList[i].ID = i;
+                }
+            
+            Session["cart"] = cartList;
+            return RedirectToAction("Index");
         }
 	}
 }
