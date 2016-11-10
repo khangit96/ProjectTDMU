@@ -50,6 +50,22 @@
 
         }
     </table>
+    <ul class="pagination">
 
+        @for (int i = 1; i <= @ViewBag.totalPage; i++)
+        {
+            if (i == ViewBag.page)
+            {
+                <li class="active"><a href="@Url.Action("Index", "ProductCategory", new {Page=i})">@i</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Index", "ProductCategory", new { Page = i })">@i</a></li>
+
+            }
+
+        }
+
+    </ul>
 </body>
 </html>

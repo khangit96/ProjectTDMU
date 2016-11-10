@@ -15,8 +15,18 @@ namespace ShopThoiTrang.Controllers
     {
         private DBShop db = new DBShop();
 
+        public ActionResult Index()
+        {
+            if (Session["login"] != null)
+            {
+                ViewBag.adminList = db.Admins.ToList();
+                return View();
+            }
+            //chuyển về trang login
+            return RedirectToRoute("Login", "Index");
+        }
         // GET: /User/
-        public async Task<ActionResult> Index()
+      /*  public async Task<ActionResult> Index()
         {
             
             if (Session["login"] != null)
@@ -167,6 +177,6 @@ namespace ShopThoiTrang.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }*/
     }
 }

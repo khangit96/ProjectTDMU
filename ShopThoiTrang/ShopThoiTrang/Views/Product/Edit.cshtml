@@ -68,7 +68,9 @@
                             <strong>Vui lòng chọn ảnh đại diện.</strong>
                         </div>
                     }
+                    
                 </div>
+                
                 <script>
                     //Hàm Duyệt ảnh của ckfinder
                     $("#chooseImage").click(function () {
@@ -188,16 +190,19 @@ else
                 <div class="col-sm-5">
                     <input type="text" id="Image" value="@product.Image" name="productImage" />
                     <input type="button" id="chooseImage" value="Chọn ảnh" class="btn btn-default" />
+                    <div class="img">
+                        <img id="img" src="@Url.Content(@product.Image)" width="50" heigh="50"/>
+                    </div>
                 </div>
                 <script>
                     //Hàm Duyệt ảnh của ckfinder
                     $("#chooseImage").click(function () {
                         var finder = new CKFinder();
                         finder.selectActionFunction = function (fileUrl) {
-                            fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                            // $("#Image").attr("src", $(this).replace("", '~/Content/files/' + fileUrl));
-                            //    $("#Image").src = '~/Content/files/1.jpg';
-
+                            fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);                      
+                            var newsrcFolder = '@Url.Content("~/Content/files/")';
+                            var newsrc = newsrcFolder+fileUrl;
+                            $("#img").attr("src",newsrc);
                             $("#Image").val('~/Content/files/' + fileUrl);
                         };
 

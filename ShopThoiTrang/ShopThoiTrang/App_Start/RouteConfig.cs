@@ -45,7 +45,7 @@ namespace ShopThoiTrang
                routes.MapRoute(//Hiển thị danh sách Product Category
                    name: "ManageProductCategory",
                    url: "admin/quan-ly-product-category/",
-                   defaults: new { controller = "ProductCategory", action = "Index" }
+                   defaults: new { controller = "ProductCategory", action = "Index",Page=1}
                     );
                routes.MapRoute(//Tạo mới Product Category
                name: "CreateProductCategory",
@@ -102,7 +102,7 @@ namespace ShopThoiTrang
               routes.MapRoute(//Hiển thị
               name: "ManageProduct",
               url: "admin/quan-ly-product/",
-              defaults: new { controller = "Product", action = "Index" }
+              defaults: new { controller = "Product", action = "Index",Page=1 }
             );
               routes.MapRoute(//Xoá
                 name: "DeleteProduct",
@@ -129,8 +129,8 @@ namespace ShopThoiTrang
         /*Phần User*/
             routes.MapRoute(
             name: "ManageUser",
-            url: "admin/quan-ly-user/",
-            defaults: new { controller = "User", action = "Index" }
+            url: "admin/quan-ly-admin/",
+            defaults: new { controller = "Admin", action = "Index" }
         );
             routes.MapRoute(
           name: "CreateUser",

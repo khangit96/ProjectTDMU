@@ -77,7 +77,7 @@
                    @parentName
                 </td>
                 <td>
-                    @Html.Raw(@product.Descriptions)
+                   ....
                 </td>
                 <td>
                     @product.TopNew
@@ -98,6 +98,22 @@
            
         }
     </table>
-    
+    <ul class="pagination">
+      
+    @for (int i = 1; i <= @ViewBag.totalPage; i++)
+{
+    if (i == ViewBag.page)
+    {
+        <li class="active"><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
+    }
+    else 
+    {
+        <li><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
+
+    }
+
+}
+        
+    </ul>
 </body>
 </html>

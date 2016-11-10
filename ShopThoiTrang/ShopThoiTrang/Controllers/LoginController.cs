@@ -17,7 +17,6 @@ namespace ShopThoiTrang.Controllers
             {
                  return RedirectToAction("Index", "Product");
             }
-          
             return View();
         }
 
@@ -30,12 +29,12 @@ namespace ShopThoiTrang.Controllers
             string username = Request["username"];
             string password = Request["password"];
          
-            foreach(var user in db.Admins.ToList())
+            foreach(var admin in db.Admins.ToList())
             {
                 //kiểm tra trong table user xem có đúng username và password ko
-                if (username.Equals(user.username) && password.Equals(user.password))
+                if (username.Equals(admin.username) && password.Equals(admin.password))
                 {
-                    Session["login"] = username;
+                    Session["login"] = admin;
                     return RedirectToAction("Index", "Product");//chuyển tới trang quản trị hệ thống
                
                 }

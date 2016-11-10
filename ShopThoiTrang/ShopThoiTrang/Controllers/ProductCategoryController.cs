@@ -14,14 +14,27 @@ namespace ShopThoiTrang.Controllers
     public class ProductCategoryController : Controller
     {
         private DBShop db = new DBShop();
-        public ActionResult Index()
+        int page = 1;
+        int numberOfPage = 5;
+        public ActionResult Index(int Page)
         {
+            page = Page;
             //Kiểm tra session login
             if (Session["login"] != null)
             {
-                ViewBag.productCategoryList = db.ProductCategories.ToList();
+                var productCategoryList = db.ProductCategories.OrderBy(x => x.ID).Skip((page - 1) * numberOfPage).Take(numberOfPage).ToList();
+
+                ViewBag.productCategoryList = productCategoryList;
+                int totalPage = db.ProductCategories.ToList().Count / numberOfPage;
+                if (db.ProductCategories.ToList().Count % numberOfPage != 0)
+                {
+                    totalPage += 1;
+                }
+                ViewBag.totalPage = totalPage;
+                ViewBag.page = page;
                 return View();
             }
+
             //chuyển về trang login
             return RedirectToRoute("Login", "Index");
 

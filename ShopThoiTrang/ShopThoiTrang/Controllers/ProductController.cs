@@ -15,15 +15,30 @@ namespace ShopThoiTrang.Controllers
     public class ProductController : Controller
     {
         private DBShop db = new DBShop();
+        int page = 1;
+        int numberOfPage = 5;
 
         //Hiển thị trang quản lí sản phẩm     
-        public ActionResult Index()
+        public ActionResult Index(int Page)
         {
+          
+                page = Page;
+
+           
             //Kiểm tra session login
             if (Session["login"] != null)
             {
-                var productList = db.Products.ToList();
+                var productList = db.Products.OrderBy(x => x.ID).Skip((page-1)*numberOfPage).Take(numberOfPage).ToList();
+
                 ViewBag.productList = productList;
+                int totalPage = db.Products.ToList().Count / numberOfPage;
+                if (db.Products.ToList().Count % numberOfPage != 0)
+                {
+                    totalPage += 1;
+                }
+                ViewBag.totalPage = totalPage;
+                ViewBag.page = page;
+
                 return View();
             }
             //chuyển về trang login

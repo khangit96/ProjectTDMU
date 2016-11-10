@@ -63,6 +63,9 @@
                 <div class="col-sm-5">
                     <input type="text" id="Image" value="@ViewBag.productImage" name="productImage" />
                     <input type="button" id="chooseImage" value="Chọn ảnh" class="btn btn-default" />
+                    <div class="img">
+                        <img id="img" src="" alt="Chưa có ảnh" width="50" heigh="50" />
+                    </div>
                     @if(ViewBag.checkPImage==false)
                     {
                     <div class="alert alert-danger">
@@ -77,9 +80,9 @@
                         var finder = new CKFinder();
                         finder.selectActionFunction = function (fileUrl) {
                             fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                           // $("#Image").attr("src", $(this).replace("", '~/Content/files/' + fileUrl));
-                            //    $("#Image").src = '~/Content/files/1.jpg';
-                            
+                            var newsrcFolder = '@Url.Content("~/Content/files/")';
+                            var newsrc = newsrcFolder + fileUrl;
+                            $("#img").attr("src", newsrc);
                             $("#Image").val('~/Content/files/' + fileUrl);
                         };
 
@@ -190,6 +193,9 @@
                 <div class="col-sm-5">
                     <input type="text" id="Image" name="productImage" />
                     <input type="button" id="chooseImage" value="Chọn ảnh" class="btn btn-default" />     
+                    <div class="img">
+                        <img id="img" src=""alt="Chưa có ảnh" width="50" heigh="50" />
+                    </div>
                 </div>
                 <script>
                     //Hàm Duyệt ảnh của ckfinder
@@ -197,8 +203,9 @@
                         var finder = new CKFinder();
                         finder.selectActionFunction = function (fileUrl) {
                             fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                           // $("#Image").attr("src", $(this).replace("", '~/Content/files/' + fileUrl));
-                            //    $("#Image").src = '~/Content/files/1.jpg';
+                            var newsrcFolder = '@Url.Content("~/Content/files/")';
+                            var newsrc = newsrcFolder + fileUrl;
+                            $("#img").attr("src", newsrc);
                             
                             $("#Image").val('~/Content/files/' + fileUrl);
                         };

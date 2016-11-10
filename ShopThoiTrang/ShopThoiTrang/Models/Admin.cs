@@ -11,10 +11,11 @@ namespace ShopThoiTrang.Models
     {
        [Key]
         public int id { get; set; }
-        public Admin(String username,String password)
+        public Admin(String username,String password,String role)
         {
             this.username = username;
             this.password = password;
+            this.role = role;
         }
         public Admin()
         { }
@@ -23,5 +24,8 @@ namespace ShopThoiTrang.Models
 
         [StringLength(50)]
         public string password { get; set; }
+        
+        [StringLength(5)]
+        public string role { get; set; }
     }
 }

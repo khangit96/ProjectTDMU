@@ -2,6 +2,7 @@
 
 @{
     Layout = null;
+    var admin = Session["login"] as ShopThoiTrang.Models.Admin;
 }
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                 <a class="navbar-brand" href="#">Trang Quản Trị</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> @Session["login"] <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>@admin.username <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Hồ sơ</a></li>
                             <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Cài đặt</a></li>
@@ -60,7 +61,12 @@
         <ul class="nav menu">
            <p>  <a href="#" class="glyphicon glyphicon-th-large"></a><a href="/admin/quan-ly-product/"> Sản Phẩm</a></p>
             <p> <a href="#" class="glyphicon glyphicon-th"></a><a href="/admin/quan-ly-product-category/"> Danh Mục Sản Phẩm</a></p>
-            <p> <a href="#" class="glyphicon glyphicon-th"></a><a href="/admin/quan-ly-user/"> User</a></p>
+           @if(admin.role=="1")
+           {
+              <p> <a href="#" class="glyphicon glyphicon-th"></a><a href="/admin/quan-ly-admin/">Admin</a></p>
+ 
+           }
+
             <li role="presentation" class="divider"></li>
             <a href="#" class="glyphicon glyphicon-off"></a> <a href="/admin/dang-xuat/">Đăng Xuất</a>
         </ul>
@@ -91,26 +97,7 @@
     
     <script src="~/Content/js/jquery-1.11.1.min.js"></script>
     <script src="~/Content/js/bootstrap.min.js"></script>
-    <script src="~/Content/js/chart.min.js"></script>
-    <script src="~/Content/js/chart-data.js"></script>
-    <script src="~/Content/js/easypiechart.js"></script>
-    <script src="~/Content/js/easypiechart-data.js"></script>
-    <script src="~/Content/js/bootstrap-datepicker.js"></script>
-    <script>
-        !function ($) {
-            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
-                $(this).find('em:first').toggleClass("glyphicon-minus");
-            });
-            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
-        }(window.jQuery);
-
-        $(window).on('resize', function () {
-            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
-        })
-        $(window).on('resize', function () {
-            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
-        })
-    </script>
+   
 </body>
 
 </html>
