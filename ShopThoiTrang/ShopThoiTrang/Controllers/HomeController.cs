@@ -79,6 +79,33 @@ namespace ShopThoiTrang.Controllers
             ViewBag.checkShowAddToCart = checkShowAddToCart;
             return View();
         }
+        
+        //Tìm kiếm sản phẩm
+        public ActionResult SearchProduct()
+        {
+            String content = Request["content"];
+            if(!content.Equals(""))
+            {
+                List<ProductCategory> categoryList = db.ProductCategories.Where(t => t.Name.Contains(content)).ToList();
+                List<Product> productList = new List<Product>();
+                foreach (var cat in categoryList)
+                {
+                    foreach (var product in db.Products.ToList())
+                    {
+                        if (product.ParentID == cat.ID)
+                        {
+                            productList.Add(product);
+                        }
+                    }
+                }
+                ViewBag.productResultList = productList;
+            }
+            return View("Search");
+
+
+           
+
+        }
 
 	}
 }

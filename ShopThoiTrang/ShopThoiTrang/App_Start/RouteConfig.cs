@@ -14,6 +14,12 @@ namespace ShopThoiTrang
             /*Định nghĩa route*/
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+             name: "SearchProduct",
+             url: "san-pham/tim-kiem/",
+             defaults: new { controller = "Home", action = "SearchProduct" }
+
+              );
             /*Phần Giỏ Hàng*/
             routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
               name: "ViewCart",
@@ -28,6 +34,11 @@ namespace ShopThoiTrang
 
             );
 
+           routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+             name: "Checkout",
+             url: "san-pham/gio-hang/thanh-toan/",
+             defaults: new { controller = "Cart", action = "Checkout" }
+             );
             /*Phần Home*/
             routes.MapRoute(//Hiển thị danh sách Product Category
                 name: "ViewByProductCategory",

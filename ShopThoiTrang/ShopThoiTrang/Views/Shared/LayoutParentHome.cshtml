@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"><!--Css-->
     <link href="~/Content/style.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-
+    <script src="~/Content/bootstrap.min.js"></script>
+    <script src="~/Content/jquery-2.1.1.min.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <script src="https://apis.google.com/js/platform.js" async defer>
         { lang: 'vi' }
@@ -94,12 +95,15 @@
                     <div class="col-sm-3">
                         <div class="slider">
                             <div class="col-sm-2 searchBox pull-right">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Nhập sản phẩm cần tìm kiếm">
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
-                                    </span>
-                                </div>
+                                <form method="post" action="@Url.Action("SearchProduct","Home")">
+                                    <div class="input-group">
+                                        <input type="text" name="content" class="form-control" placeholder="Nhập sản phẩm cần tìm kiếm">
+                                        <span class="input-group-btn">
+                                            <button type="submit" style="color:white" class="btn btn-primary">Tìm kiếm</button>
+                                        </span>
+                                    </div>
+                                </form>
+                               
                             </div>
                         </div>
                     </div>

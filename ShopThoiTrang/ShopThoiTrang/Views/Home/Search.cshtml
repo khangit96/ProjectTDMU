@@ -1,11 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "ViewByProductCategory";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/LayoutParentHome.cshtml";
-    var productList = ViewBag.productList;
+    var productList = ViewBag.productResultList;
     //đinh dạng tiền Việt Nam
-    IFormatProvider formatProvider =new System.Globalization.CultureInfo("vi-VN");
-    var productCategoryName =ViewBag.productCategoryName;
+    IFormatProvider formatProvider = new System.Globalization.CultureInfo("vi-VN");
 }
 
 <div class="products">
@@ -20,10 +19,13 @@
                 <div class="row">
                     <!-- Dòng 1 -->
                     <div class="col-sm-12">
-                        <p class="box-title">@productCategoryName</p>
+                        <p class="box-title">Kết quả tìm kiếm</p>
                     </div>
                 </div>
-                <div class="row">
+                @if (productList!=null)
+                {  if(productList.Count!=0)
+                    {
+                    <div class="row">
                     @foreach (var p in productList)
                     {
                         var name = new ShopThoiTrang.Models.DBShop().ProductCategories.Find(p.ParentID).Name;
@@ -44,27 +46,27 @@
                             <div class="info">
                                 <!-- Phần thông tin giá cả -->
                                 <div class="pull-left">
-                                    @if(p.TopNew=="Có"&& p.TopDecrease=="Không")
+                                    @if (p.TopNew == "Có" && p.TopDecrease == "Không")
                                     {
 
-                                       
+
                                     }
-                                    else if(p.TopNew=="Không"&&p.TopDecrease=="Có")
+                                    else if (p.TopNew == "Không" && p.TopDecrease == "Có")
                                     {
-                                          
-                                         <del>
+
+                                        <del>
                                             <span>@p.Price.ToString("C", formatProvider)</span>
 
-                                          </del>
-                                        
+                                        </del>
+
                                     }
-                                    else if(p.TopNew=="Có"&&p.TopDecrease=="Có")
+                                    else if (p.TopNew == "Có" && p.TopDecrease == "Có")
                                     {
-                                      
-                                         <del>
+
+                                        <del>
                                             <span>@p.Price.ToString("C", formatProvider)</span>
 
-                                          </del>
+                                        </del>
                                     }
                                     <ins>
                                         <span>@p.Price.ToString("C", formatProvider)</span>
@@ -73,7 +75,7 @@
                                 <!-- Kết thúc phần thông tin giá -->
                                 <div class="pull-right">
                                     <!-- Phẩn hiển thị hình ảnh giỏ hàng -->
-                                   
+
                                 </div>
                                 <!-- Kết thúc hiển thị giỏ hàng -->
                             </div>
@@ -82,6 +84,20 @@
                     }
 
                 </div>
+                    }
+                    else
+                        {
+                           <p>Không có kết quả nào phù hợp.</p>
+
+                        }
+                    
+                }
+                else
+                {
+                   <p>Không có kết quả nào phù hợp.</p>
+
+                }
+                
             </div>
             <!--Kết thúc container-->
     </section>

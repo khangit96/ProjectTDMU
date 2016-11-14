@@ -8,6 +8,7 @@
     IFormatProvider formatProvider =
         new System.Globalization.CultureInfo("vi-VN");
 }
+<script src="~/Content/easyzoom.js"></script>
 <div class="products">
 
          <!--Phần thông tin sản phẩm-->
@@ -16,12 +17,15 @@
                  <div class="container">
                      <div class="col-md-6">
                          <div class="product col-md-12">
-                             <a href="@Url.Content(@product.Image)" data-spzoom>
-                                 <img id="imgZoom" src="@Url.Content(@product.Image)" class="img-responsive" alt="No Image" onmousemove="zoomIn(event)" onmouseout="zoomOut()" />
+                             <div class="easyzoom easyzoom--overlay zoom">
+                                 <a href="@Url.Content(@product.Image)">
+                                     <img  src="@Url.Content(@product.Image)"  alt="No Image" />
 
-                             </a>
+                                 </a>
+                             </div>
+                            
                          </div>
-
+                        
                          <div class="container service1- col-sm-2 col-md-2 pull-left">
                              <a id="item-1" class="service1-item">
                              </a>
@@ -33,7 +37,7 @@
                      </div>
 
                      <div class="col-md-6">
-                         <div class="product-title">Tên sản phẩm: @parentName</div>
+                         <div class="product-title"><h3>Tên sản phẩm: @parentName</h3></div>
                          <div class="product-title">Kiểu: @product.Name</div>
                          <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i> </div>
                          <hr>
@@ -46,10 +50,14 @@
                              @if (ViewBag.checkShowAddToCart =="false")
                              {
                                 <form method="post" action="@Url.Action("AddToCart", "Cart", new {id=@product.ID})">
-                                    <div class="quantity">
-                                        <input type="text" name="quantity" value="1" />
+                                    <div class="quantity col-md-4">
+                                        
+                                            Số lượng: <input type="text" name="quantity" class="form-control" value="1" />
+
+                                        
                                     </div>
-                                    <input type="submit" class="btn btn-primary" value="Thêm vào giỏ hàng"/>
+                                 
+                                    <input type="submit" style="margin-top:15px" class="btn btn-primary" value="Thêm vào giỏ hàng"/>
                                 </form>
                                  
                               
@@ -74,8 +82,9 @@
 
                  </ul>
                  <div id="myTabContent" class="tab-content">
-                     <div class="tab-pane fade in active" id="service-one">
-
+                     <div class="tab-pane fade in active" id="service-one" style="margin-top:30px">
+                         
+                           @Html.Raw(@product.Descriptions)
                      </div>
                      <div class="tab-pane fade" id="service-two">
                         
@@ -155,3 +164,11 @@
     <!--Kết thúc phần hiển thị sản phẩm-->
 
 </div>
+<script type="text/javascript">
+    // Instantiate EasyZoom instances
+    $(document).ready(function () {
+        //you can now use $ as your jQuery object.
+         $('.zoom').easyZoom();
+    });
+  
+</script>

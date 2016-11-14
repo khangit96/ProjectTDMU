@@ -24,6 +24,10 @@ namespace ShopThoiTrang.Controllers
            
             return View();
         }
+        public ActionResult Checkout()
+        {
+            return View();
+        }
         public ActionResult AddToCart(int id)
         {
             Product product = new DBShop().Products.Find(id);
@@ -101,4 +105,5 @@ namespace ShopThoiTrang.Controllers
             return RedirectToAction("Index");
         }
 	}
+   
 }

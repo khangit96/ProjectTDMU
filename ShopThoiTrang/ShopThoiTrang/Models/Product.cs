@@ -14,7 +14,7 @@ namespace ShopThoiTrang.Models
         [StringLength(250)]
         public string Name { get; set; }
 
-        [StringLength(500)]
+       [StringLength(int.MaxValue)]
         public string Descriptions { get; set; }
 
         [StringLength(250)]
