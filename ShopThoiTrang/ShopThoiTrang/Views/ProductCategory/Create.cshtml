@@ -12,33 +12,51 @@
     <title>Thêm Mới Danh Mục Sản Phẩm</title>
 </head>
 <body>
-    <h1 style="text-align:center">Thêm mới danh mục</h1>
-    <div class="input">
-        <form class="form-horizontal" method="post" action="@Url.Action("SaveCreateProductCategory", "ProductCategory")">
-            <div class="form-group">
-                <label for="nameProduct" class="col-sm-2 col-sm-offset-2 control-label">Tên danh mục</label>
-                <div class="col-sm-5">
-                    <input type="text" class="form-control" name="productCategoryName" placeholder="Tên danh mục">
-                    @if (ViewBag.checkNameCategory == false)
-                    {
-                        <div class="alert alert-danger">
-                            <strong>Vui lòng nhập tên danh mục.</strong>
-                        </div>
-                    }
 
+
+    <div class="row" style="margin-top:50px;margin-left:100px">
+        <div class="col-md-7">
+            <div class="container">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">DANH MỤC SẢN PHẨM / THÊM MỚI</div>
+                    <div class="panel-body">
+
+
+                        <div class="panel panel-success">
+
+                            <div class="input">
+                                <form class="form-horizontal" method="post" action="@Url.Action("SaveCreateProductCategory", "ProductCategory")">
+                                    <div class="form-group">
+                                        <label for="nameProduct" class="col-sm-3 control-label">Tên danh mục</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" class="form-control" name="productCategoryName" placeholder="Tên danh mục">
+                                            @if (ViewBag.checkNameCategory == false)
+                                            {
+                                                <div class="alert alert-danger" style="margin-top:10px">
+                                                    <strong>Vui lòng nhập tên danh mục.</strong>
+                                                </div>
+                                            }
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-3 col-sm-offset-3">
+                                            <button type="submit" class="btn btn-info">Thêm</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
+
             </div>
-          
- 
-            <div class="form-group">
-                <div class="col-sm-offset-4 col-sm-10">
-                    <button type="submit" class="btn btn-info">Thêm</button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div>
-        <a href="/admin/quan-ly-product-category/">Quay lại</a>
-    </div>
+        </div>
+    </div><!--/.col-->
+
+       
 </body>
 </html>

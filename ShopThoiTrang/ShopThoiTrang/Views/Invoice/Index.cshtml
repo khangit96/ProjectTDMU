@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayoutParentLogin.cshtml";
+    var invoiceList = ViewBag.invoiceList;
+    var count = 0;
+    IFormatProvider formatProvider =
+       new System.Globalization.CultureInfo("vi-VN");
+}
+
+<div class="row" style="margin-top:50px;margin-left:100px">
+    <div class="col-md-9">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">HOÁ ĐƠN / DANH SÁCH</div>
+                <div class="panel-body">
+
+                  
+                  
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                           
+                            <table class="table table-bordered" style="text-align:center">
+                                <tr>
+                                    <th style="text-align:center">
+                                        STT
+                                    </th>
+                                    <th style="text-align:center">
+                                        Mã Hoá Đơn
+                                    </th>
+                                    <th style="text-align:center">
+                                        Tên Khách Hàng
+                                    </th>
+                                    <th style="text-align:center">
+                                        Tổng Tiền
+                                    </th>
+                                    
+                                </tr>
+
+                                @foreach (var invoice in invoiceList)
+                                {
+                                    count++;
+                                    var customerName = new ShopThoiTrang.Models.DBShop().Customers.Find(invoice.CustomerID).CustomerName;
+                                    <tr>
+                                        <td>
+                                            <p>@count</p>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/hoa-don/chi-tiet-@invoice.ID/">HD-@invoice.ID</a> 
+
+                                        </td>
+                                        <td>
+                                            <a href="#">@customerName</a> 
+
+                                        </td>
+                                        <td>
+                                           <p style="color:red"> @invoice.TotalPrice.ToString("C", formatProvider)</p>
+                                        </td>
+                                       
+                                    </tr>
+
+                                }
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--/.col-->

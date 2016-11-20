@@ -167,6 +167,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -176,9 +177,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Bill.cs" />
+    <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\Checkout.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DBShop.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -190,6 +193,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-confirm.js" />
     <Content Include="Content\bootstrap-table.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.js" />
@@ -1139,16 +1143,11 @@
     <Content Include="Content\ckfinder\skins\v1\skin.js" />
     <Content Include="Content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Content\ckfinder\translations.txt" />
-    <Content Include="Content\easyzoom.js" />
-    <Content Include="Content\files\logo.png" />
-    <Content Include="Content\files\newproduct.jpg" />
-    <Content Include="Content\html5shiv.min.js" />
-    <Content Include="Content\ie8-responsive-file-warning.js" />
     <Content Include="Content\jquery-2.1.1.min.js" />
     <Content Include="Content\lumino.glyphs.js" />
     <Content Include="Content\main.js" />
-    <Content Include="Content\respond.min.js" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\stylesAdmin.css" />
     <Content Include="Content\stylesLogin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -1159,6 +1158,7 @@
     <Content Include="Content\ckeditor\.htaccess" />
     <Content Include="Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Content\ckfinder\userfiles\.htaccess" />
+    <None Include="Properties\PublishProfiles\kshop.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -1212,9 +1212,14 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Cart\Invoice.cshtml" />
+    <Content Include="Views\Invoice\Index.cshtml" />
+    <Content Include="Views\Product\Statistics.cshtml" />
+    <Content Include="Views\Invoice\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\files\" />
     <Folder Include="Content\_thumbs\Images\" />
   </ItemGroup>
   <ItemGroup>

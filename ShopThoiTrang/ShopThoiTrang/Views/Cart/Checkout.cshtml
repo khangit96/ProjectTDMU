@@ -3,7 +3,42 @@
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/LayoutParentHome.cshtml";
 }
+<script src="~/Content/bootstrap-confirm.js"></script>
+<script>
+    $(document).ready(function () {
+    
+        $("input[name='checkout']").click(function () {
+           
+            $("#fpost").submit(function () {
+                var order_name = $("input:text[name=order_name]").val();
+                var order_email = $("input:text[name=order_email]").val();
+                var order_address = $("input:text[name=order_address]").val();
+                var order_phone = $("input:text[name=order_phone]").val();
+                if (order_name == "" || order_email == "" || order_phone == "" || order_address == "")
+                {
+                    $.confirm({
 
+                        title: 'Lỗi',
+                        titleIcon: 'glyphicon glyphicon-exclamation-sign',
+
+                        template: 'danger',
+
+                        message: 'Vui lòng nhập đầy đủ các mục có đánh dấu(*)!',
+
+                        buttonOk: true,
+                        labelOk: 'Thử lại',
+
+                        buttonCancel: false
+
+                    });
+                    return false;
+                }
+                return true;
+            })
+        })
+ 
+    });
+</script>
 <div class="shopping-cart">
     <div class="step">
         <div class="row">
@@ -11,13 +46,13 @@
                 <a href="/san-pham/gio-hang/" class="glyphicon glyphicon-ok-sign"> 1 XEM GIỎ HÀNG</a>
             </div>
             <div class="col-md-6">
-                <a href="/san-pham/gio-hang/thanh-toan/" class="glyphicon glyphicon-ok-sign"> 2 THANH TOÁN</a>
+                <a href="/san-pham/gio-hang/thanh-toan/" class="glyphicon glyphicon-ok-sign"> 2 ĐẶT HÀNG</a>
             </div>
         </div>
     </div>
  </div>
 <div class="col-md-12" style="margin-top:50px;margin-left:100px;">
-    <form method="post" name="fpost" id="fpost">
+    <form method="post" id="fpost" action="@Url.Action("SaveInvoice","Cart")">
         <input type="hidden" value="1" name="postorder">
         <table class="table" style="margin-bottom: 6px;margin-top:10px;">
             <p style="font-size:18px">Xin điền đầy đủ thông tin vào các mục đánh dấu(*) </p>
@@ -25,7 +60,8 @@
             <tbody>
                 <tr>
                     <td width="180px">Họ tên người mua (*)</td>
-                    <td><input name="order_name" style="width: 50%" value=""> </td>
+                    <td><input name="order_name" style="width: 50%" value=""></td> 
+                <td style="margin-right:100px"></td>
                 </tr>
                 <tr style="margin-top:10px">
                     <td>Địa chỉ email (*)</td>
@@ -42,7 +78,7 @@
                     </td>
                 </tr>
             </tbody>
-
+            
         </table>
       <!---->
         <table class="table" style="margin-top: 30px">
@@ -59,7 +95,7 @@
             <tbody>
                 <tr>
                     <td><input type="checkbox" name="check" value="1" id="check"><span id="idselect">Bạn có chắc chắn thông tin của bạn là chính xác ?</span> <br> </td>
-                    <td align="right"><a style="color: #428FC1" class="btn btn-default" type="button" title="Gửi thông tin phiếu đặt hàng" href="#" id="submit_send"><span>Gửi thông tin phiếu đặt hàng</span></a></td>
+                    <td align="right"><input style="color: #428FC1" class="btn btn-default" name="checkout" id="checkout" type="submit" value="Gửi thông tin đặt hàng" /></td>
                 </tr>
             </tbody>
         </table>

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/LayoutParentHome.cshtml";
+}
+
+<div class="shopping-cart">
+    <div class="step">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/san-pham/gio-hang/" class="glyphicon glyphicon-ok-sign"> 1 XEM GIỎ HÀNG</a>
+            </div>
+            <div class="col-md-6">
+                <a href="/san-pham/gio-hang/thanh-toan/" class="glyphicon glyphicon-ok-sign"> 2 THANH TOÁN</a>
+            </div>
+        </div>
+    </div>
+ </div>
+<div class="col-md-12" style="margin-top:50px;margin-left:100px;">
+    <form method="post" name="fpost" id="fpost">
+        <input type="hidden" value="1" name="postorder">
+        <table class="table" style="margin-bottom: 6px;margin-top:10px;">
+            <p style="font-size:18px">Xin điền đầy đủ thông tin vào các mục đánh dấu(*) </p>
+
+            <tbody>
+                <tr>
+                    <td width="180px">Họ tên người mua (*)</td>
+                    <td><input name="order_name" style="width: 50%" value=""> </td>
+                </tr>
+                <tr style="margin-top:10px">
+                    <td>Địa chỉ email (*)</td>
+                    <td><input name="order_email" style="width: 50%" value=""> </td>
+                </tr>
+                <tr>
+                    <td>Điện thoại (*)</td>
+                    <td><input name="order_phone" style="width: 50%" value=""></td>
+                </tr>
+                <tr>
+                    <td valign="top">Địa chỉ nhận hàng (*)</td>
+                    <td valign="top">
+                        <input name="order_address" value="" style="width: 100%"> <br>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+      <!---->
+        <table class="table" style="margin-top: 30px">
+            <tbody>
+                <tr>
+                    <td>Ghi chú(nếu có)</td>
+                </tr>
+                <tr>
+                    <td><textarea style="width: 100%; height: 100px;" name="order_note"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="rows2" style="margin-top: 30px">
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" name="check" value="1" id="check"><span id="idselect">Bạn có chắc chắn thông tin của bạn là chính xác ?</span> <br> </td>
+                    <td align="right"><a style="color: #428FC1" class="btn btn-default" type="button" title="Gửi thông tin phiếu đặt hàng" href="#" id="submit_send"><span>Gửi thông tin phiếu đặt hàng</span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+    
+

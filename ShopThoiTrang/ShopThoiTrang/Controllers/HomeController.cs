@@ -101,11 +101,7 @@ namespace ShopThoiTrang.Controllers
                 ViewBag.productResultList = productList;
             }
             return View("Search");
-
-
-           
-
         }
-
+     
 	}
 }

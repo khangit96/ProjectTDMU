@@ -10,6 +10,7 @@ namespace ShopThoiTrang.Controllers
     {
         //
         // GET: /Cart/
+        DBShop db = new DBShop();
         public ActionResult Index()
         {
             ViewBag.cartList = Session["cart"] as List<Cart>;
@@ -27,6 +28,46 @@ namespace ShopThoiTrang.Controllers
         public ActionResult Checkout()
         {
             return View();
+        }
+        public ActionResult SaveInvoice()
+        {
+            String orderName = Request["order_name"];
+            String orderEmail = Request["order_email"];
+            String orderAddress = Request["order_address"];
+            String orderPhone = Request["order_phone"];
+            Customer customer = new Customer(orderName, orderAddress, orderEmail, orderPhone);
+            db.Customers.Add(customer);
+            db.SaveChanges();
+
+            var countOfRows = db.Customers.ToList().Count();
+            var lastRowID = db.Customers.OrderBy(c => c.ID).Skip(countOfRows - 1).Take(1).Single().ID;
+
+            List<Cart> cartList=  Session["cart"] as List<Cart>;
+            decimal totalPrice=0;
+            foreach(var cart in cartList)
+            {
+                totalPrice+=cart.totalPrice;
+            }
+
+            Bill bill = new Bill(lastRowID,totalPrice);
+            db.Bills.Add(bill);
+            db.SaveChanges();
+
+             countOfRows = db.Bills.ToList().Count();
+             lastRowID = db.Bills.OrderBy(c => c.ID).Skip(countOfRows - 1).Take(1).Single().ID;
+
+            foreach(var cart in cartList)
+            {
+               BillDetail billDetail = new BillDetail(cart.product.ID,cart.totalPrice,lastRowID,cart.quantity);
+               db.BillDetails.Add(billDetail);
+
+            }
+            db.SaveChanges();
+            ViewBag.customer=customer;
+            ViewBag.cartList = Session["cart"] as List<Cart>;
+            Session.Clear();
+
+            return View("Invoice");
         }
         public ActionResult AddToCart(int id)
         {

@@ -14,6 +14,27 @@ namespace ShopThoiTrang
             /*Định nghĩa route*/
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+             name: "ManageInvoice",
+             url: "admin/quan-ly-hoa-don/",
+             defaults: new { controller = "Invoice", action = "Index" }
+
+              );
+
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+             name: "InvoiceDetail",
+             url: "admin/hoa-don/chi-tiet-{ID}/",
+             defaults: new { controller = "Invoice", action = "Detail" }
+
+              );
+
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+             name: "Statistics",
+             url: "admin/san-pham/thong-ke/",
+             defaults: new { controller = "Product", action = "Statistics" }
+
+              );
             routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
              name: "SearchProduct",
              url: "san-pham/tim-kiem/",
@@ -27,6 +48,12 @@ namespace ShopThoiTrang
               defaults: new { controller = "Cart", action = "Index" }
 
                );
+            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+            name: "DeleteCart",
+            url: "san-pham/gio-hang/xoa-{id}/",
+            defaults: new { controller = "Cart", action = "DeleteCart" }
+
+             );
            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
            name: "AddToCart",
            url: "san-pham/gio-hang/them/{id}/",
@@ -36,9 +63,14 @@ namespace ShopThoiTrang
 
            routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
              name: "Checkout",
-             url: "san-pham/gio-hang/thanh-toan/",
+             url: "san-pham/gio-hang/dat-hang/",
              defaults: new { controller = "Cart", action = "Checkout" }
              );
+           routes.MapRoute(//Hiển thị danh sách sản phẩm trong giỏ hàng
+            name: "Invoice",
+            url: "san-pham/dat-hang/hoa-don/",
+            defaults: new { controller = "Cart", action = "SaveInvoice" }
+            );
             /*Phần Home*/
             routes.MapRoute(//Hiển thị danh sách Product Category
                 name: "ViewByProductCategory",

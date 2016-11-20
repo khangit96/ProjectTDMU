@@ -17,7 +17,10 @@ namespace ShopThoiTrang.Models
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Admin> Admins { get; set; }
-        public virtual DbSet<Checkout>Checkouts { get; set; }
+        public virtual DbSet<Bill> Bills { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<BillDetail> BillDetails { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
