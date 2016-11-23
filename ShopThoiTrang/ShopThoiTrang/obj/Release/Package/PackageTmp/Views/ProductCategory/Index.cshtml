@@ -5,67 +5,104 @@
     var count = 0;
 }
 
+<script src="~/Content/bootstrap-confirm.js"></script>
+    <script>
+        $(document).ready(function () {
 
-<!DOCTYPE html>
+            /*
+             *
+             */
+            $('.glyphicon-trash').click(function (e) {
+                e.preventDefault();
+                var url = $(this).attr('href');
+            
+                var r = confirm("Bạn có muốn xoá danh mục sản phẩm?");
+                if (r == true) {
+                    window.location.replace(url);
+                }
+            });
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Danh Mục Sản Phẩm</title>
-</head>
-<body>
-    <h1 style="text-align:center">Danh Mục Sản Phẩm</h1>
-    <p>
-        <a href="/admin/quan-ly-product-category/them-moi/">Thêm mới</a>
-    </p>
-    <table class="table table-bordered" style="text-align:center">
-        <tr>
-            <th style="text-align:center">
-                #
-            </th>
-            <th style="text-align:center"> Tên danh mục</th>
+        });
+    </script>
 
-            <th style="text-align:center">
-                Tuỳ chọn
-            </th>
-        </tr>
+    <div class="row" style="margin-top:50px;margin-left:100px">
+        <div class="col-md-9">
+            <div class="container">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">DANH MỤC SẢN PHẨM / DANH SÁCH</div>
+                    <div class="panel-body">
 
-        @foreach (var pc in productCategoryList)
-        {
-            count++;
-            <tr>
-                <td>
-                    @count
-                </td>
-                <td>
-                    @pc.Name
 
-                </td>
+                        <div class="panel panel-success">
 
-                <td>
-                    <a href="/admin/quan-ly-product-category/chinh-sua/@pc.ID/">Chỉnh Sửa </a><a href="/admin/quan-ly-product-category/xoa/@pc.ID/">Xoá</a>
+                            <div class="panel panel-heading">
+                                <table class="table table-bordered" style="text-align:center">
+                                    <tr>
+                                        <th style="text-align:center">
+                                            #
+                                        </th>
+                                        <th style="text-align:center"> Tên danh mục</th>
 
-                </td>
-            </tr>
+                                        <th style="text-align:center">
+                                            Tuỳ chọn
+                                        </th>
+                                    </tr>
 
-        }
-    </table>
-    <ul class="pagination">
+                                    @foreach (var pc in productCategoryList)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <td>
+                                                @count
+                                            </td>
+                                            <td>
+                                                @pc.Name
 
-        @for (int i = 1; i <= @ViewBag.totalPage; i++)
-        {
-            if (i == ViewBag.page)
-            {
-                <li class="active"><a href="@Url.Action("Index", "ProductCategory", new {Page=i})">@i</a></li>
-            }
-            else
-            {
-                <li><a href="@Url.Action("Index", "ProductCategory", new { Page = i })">@i</a></li>
+                                            </td>
 
-            }
+                                            <td>
+                                                <div>
+                                                    <a style="font-size:18px" href="/admin/quan-ly-product-category/chinh-sua/@pc.ID/" class="glyphicon glyphicon-pencil"> </a>
+                                                </div>
+                                                <div>
+                                                    <a href="/admin/quan-ly-product-category/xoa/@pc.ID/" style="font-size:18px" class="glyphicon glyphicon-trash"></a>
+                                                </div>
 
-        }
 
-    </ul>
-</body>
-</html>
+                                            </td>
+                                        </tr>
+
+                                    }
+                                </table>
+                            </div> 
+                            
+                        </div>
+                        <div class="pull-right" style="margin-top:300px">
+                            <ul class="pagination">
+
+                                @for (int i = 1; i <= @ViewBag.totalPage; i++)
+                                {
+                                    if (i == ViewBag.page)
+                                    {
+                                        <li class="active"><a href="@Url.Action("Index", "ProductCategory", new {Page=i})">@i</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="@Url.Action("Index", "ProductCategory", new { Page = i })">@i</a></li>
+
+                                    }
+
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="col-md-3" style="margin-top:350px">
+                            <a href="/admin/quan-ly-product-category/them-moi/" type="button" class="btn btn-info">Thêm mới</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div><!--/.col-->

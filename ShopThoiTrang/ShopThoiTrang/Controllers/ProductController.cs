@@ -276,7 +276,26 @@ namespace ShopThoiTrang.Controllers
         }
         public ActionResult Statistics()
         {
+            List<Sale> saleList = new List<Sale>();
+            foreach(var product in db.Products.ToList())
+            {
+                Sale sale = new Sale(product,getSaleQuantity(product));
+                saleList.Add(sale);
+            }
+            ViewBag.saleList = saleList;
             return View();
+        }
+        public int getSaleQuantity(Product product)
+        {
+            int totalQuantity = 0;
+            foreach(var billDetail in db.BillDetails.ToList())
+            {
+                if(product.ID==billDetail.ProductID)
+                {
+                    totalQuantity += billDetail.Quantity;
+                }
+            }
+            return totalQuantity;
         }
        
     }

@@ -8,112 +8,156 @@
   
 }
 
-<!DOCTYPE html>
+<script src="~/Content/bootstrap-confirm.js"></script>
+<script>
+    $(document).ready(function () {
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Quản Lý Sản Phẩm</title>
-</head>
-<body>
-   <h1 style="text-align:center">Danh Sách Sản Phẩm</h1>
-    <p>
-        <a href="/admin/quan-ly-product/them-moi/">Thêm mới</a>
-    </p>
-    <table class="table table-bordered" style="text-align:center">
-        <tr>
-            <th style="text-align:center">
-                #
-            </th>
-            <th style="text-align:center">
-                Tên sản phẩm
-            </th>
-            <th style="text-align:center">
-                Giá
-            </th>
-            <th style="text-align:center">
-                Ảnh đại diện
-            </th>
-            <th style="text-align:center">
-                Bộ sưu tập
-            </th>
-            <th style="text-align:center">
-                Mô tả chi tiết
-            </th>
-            <th style="text-align:center">
-                Sản phẩm mới
-            </th>
-            <th style="text-align:center">
-                Sản phẩm giảm giá
-            </th>
-            <th style="text-align:center">
-                Giá giảm
-            </th>
-            <th style="text-align:center">
-                Tuỳ chọn
-            </th>
-        </tr>
+        /*
+         *
+         */
+        $('.glyphicon-trash').click(function (e) {
+            e.preventDefault();
+            var url = $(this).attr('href');
 
-        @foreach (var product in productList)
-        {
-            count++;
-            var db = new ShopThoiTrang.Models.DBShop();
-            var parentName = db.ProductCategories.Find(product.ParentID).Name;
-            <tr>
-                <td>
-                    @count
-                </td>
-                <td>
-                    @product.Name
+            var r = confirm("Bạn có muốn xoá sản phẩm?");
+            if (r == true) {
+                window.location.replace(url);
+            }
+        });
 
-                </td>
-                <td>
-                    <span>@product.Price.ToString("C", formatProvider)</span>
-                </td>
-                <td>
-                    <img src="@Url.Content(@product.Image)" height="50" width="50" alt="Không có ảnh">
-                </td>
-                <td>
-                   @parentName
-                </td>
-                <td>
-                   ....
-                </td>
-                <td>
-                    @product.TopNew
-                </td>
-                <td>
-                    @product.TopDecrease
-                </td>
-                <td>
-                    <span>@product.DecreasePrice.ToString("C", formatProvider)</span>
+    });
+</script>
 
-                </td>
+<div class="row" style="margin-top:50px;">
+    <div class="col-md-12">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">SẢN PHẨM / DANH SÁCH</div>
+                <div class="panel-body">
+                    
+                    
+                            <div class="panel panel-success">
+                                <div class="col-md-12">
+                                    
+                                    <table class="table table-bordered" style="text-align:center">
+                                        <tr>
+                                            <th style="text-align:center">
+                                                #
+                                            </th>
+                                            <th style="text-align:center">
+                                                Tên sản phẩm
+                                            </th>
+                                            <th style="text-align:center">
+                                                Giá
+                                            </th>
+                                            <th style="text-align:center">
+                                                Ảnh đại diện
+                                            </th>
+                                            <th style="text-align:center">
+                                                Bộ sưu tập
+                                            </th>
+                                            <th style="text-align:center">
+                                                Mô tả chi tiết
+                                            </th>
+                                            <th style="text-align:center">
+                                                Sản phẩm mới
+                                            </th>
+                                            <th style="text-align:center">
+                                                Sản phẩm giảm giá
+                                            </th>
+                                            <th style="text-align:center">
+                                                Giá giảm
+                                            </th>
+                                            <th style="text-align:center">
+                                                Tuỳ chọn
+                                            </th>
+                                        </tr>
 
-                <td>
-                    <a href="/admin/quan-ly-product/chinh-sua/@product.ID/">Chỉnh Sửa  </a><a href="/admin/quan-ly-product/xoa/@product.ID/">Xoá</a>
+                                        @foreach (var product in productList)
+                                        {
+                                            count++;
+                                            var db = new ShopThoiTrang.Models.DBShop();
+                                            var parentName = db.ProductCategories.Find(product.ParentID).Name;
+                                            <tr>
+                                                <td>
+                                                    @count
+                                                </td>
+                                                <td>
+                                                    @product.Name
 
-                </td>
-            </tr>  
-           
-        }
-    </table>
-    <ul class="pagination">
-      
-    @for (int i = 1; i <= @ViewBag.totalPage; i++)
-{
-    if (i == ViewBag.page)
-    {
-        <li class="active"><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
-    }
-    else 
-    {
-        <li><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
+                                                </td>
+                                                <td>
+                                                    <span>@product.Price.ToString("C", formatProvider)</span>
+                                                </td>
+                                                <td>
+                                                    <img src="@Url.Content(@product.Image)" height="50" width="50" alt="Không có ảnh">
+                                                </td>
+                                                <td>
+                                                    @parentName
+                                                </td>
+                                                <td>
+                                                    ....
+                                                </td>
+                                                <td>
+                                                    @product.TopNew
+                                                </td>
+                                                <td>
+                                                    @product.TopDecrease
+                                                </td>
+                                                <td>
+                                                    <span>@product.DecreasePrice.ToString("C", formatProvider)</span>
 
-    }
+                                                </td>
 
-}
-        
-    </ul>
-</body>
-</html>
+                                                <td>
+                                                    <div>
+                                                        <a style="font-size:18px" href="/admin/quan-ly-product/chinh-sua/@product.ID/" class="glyphicon glyphicon-pencil"></a>
+                                                    </div>
+                                                    <div style="margin-top:5px">
+                                                        <a href="/admin/quan-ly-product/xoa/@product.ID/" style="font-size:18px"  class="glyphicon glyphicon-trash"></a>
+
+                                                    </div>
+                                                    
+
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    </table>
+
+                                </div>
+
+                            </div>
+
+                        
+                    
+                    <div class="pull-right">
+                        <ul class="pagination">
+
+                            @for (int i = 1; i <= @ViewBag.totalPage; i++)
+                            {
+                                if (i == ViewBag.page)
+                                {
+                                    <li class="active"><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="@Url.Action("Index", "Product", new {Page=i})">@i</a></li>
+
+                                }
+
+                            }
+
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-3" style="margin-top:50px">
+                        <a href="/admin/quan-ly-product/them-moi/" type="button" class="btn btn-info">Thêm mới</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--/.col-->

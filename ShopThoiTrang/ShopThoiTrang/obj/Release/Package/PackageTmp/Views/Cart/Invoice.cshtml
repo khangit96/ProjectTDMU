@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Invoice";
+    Layout = "~/Views/Shared/LayoutParentHome.cshtml";
+    var customer = ViewBag.customer as ShopThoiTrang.Models.Customer;
+    IFormatProvider formatProvider =
+       new System.Globalization.CultureInfo("vi-VN");
+    var cartList = ViewBag.cartList;
+    var count = 1;
+    var totalPrice = 0;
+}
+<div class="shopping-cart">
+    <div class="step">
+        <div class="row">
+            <div class="col-md-6">
+                <a href="#" class="glyphicon glyphicon-ok-sign"> PHIẾU ĐẶT HÀNG</a>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<div style="margin-left: 100px; margin-top: 50px; border: 1px solid #428FC1; padding: 50px">
+    <table class="rows2" style="margin-bottom:2px">
+        <tbody>
+            <tr>
+                <td>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td width="150px">
+                                    Họ tên người mua:
+                                </td>
+                                <td>
+                                    <strong>@customer.CustomerName</strong>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Địa chỉ email:
+                                </td>
+                                <td>
+                                    @customer.CustomerEmail
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Điện thoại:
+                                </td>
+                                <td>
+                                    @customer.CustomerPhone
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">
+                                    Địa chỉ nhận hàng:
+                                </td>
+                                <td valign="top">
+                                    @customer.CustomerAddress
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Đặt ngày:
+                                </td>
+                                <td>
+                                    18-11-2016 lúc 09:50'
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td width="200px" valign="top" align="center" style="padding:20px">
+                    <div>
+                        Mã đơn hàng
+                        <br>
+                        <span  class="text_date" style="font-size:20px">S011719</span>
+                        <br>
+                        <span class="payment" style=" padding:10px;color:red;margin-top:60px">Chưa thanh toán</span><br />
+                        <a href="#" style="font-size:18px;margin-top:30px;padding:10px">In đơn hàng</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<form method="post" action="@Url.Action("UpdateCart","Cart")" style="margin-left:100px;margin-top:30px">
+    <div class="content">
+        
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table table-bordered" style="text-align:center">
+                            <thead>
+                                <tr style="font-size:17px">
+                                    <td>STT</td>
+                                    <td>Ảnh</td>
+                                    <td>Sản phẩm</td>
+                                    <td>Số lượng</td>
+                                    <td>Giá(VNĐ) </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                                @foreach (var cart in cartList)
+                                {
+                                    var name = new ShopThoiTrang.Models.DBShop().ProductCategories.Find(cart.product.ParentID).Name;
+                                    totalPrice += cart.totalPrice;
+
+                                    <tr>
+                                        <td class="text-center" style="text-align:center">@count</td>
+
+                                        <td>
+                                            <a href="/san-pham/chi-tiet-@cart.product.ID/">
+                                                <img src="@Url.Content(@cart.product.Image)" height="50" width="50" class="img-responsive" alt="No Image" />
+                                            </a>
+                                        </td>
+                                        <td><a href="/san-pham/chi-tiet-@cart.product.ID/">@name - @cart.product.Name</a></td>
+                                        <td>
+                                            <div class="col-md-4">
+                                                <input class="form-control" name="quantity" value="@cart.quantity" type="text">
+
+                                            </div>
+                                        </td>
+                                        <td style="color: #CC3300">@cart.totalPrice.ToString("C", formatProvider)</td>
+                                      
+                                    </tr>
+                                    count++;
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    Tổng số tiền:<span style="color:red;font-size:18px">@totalPrice.ToString("C", formatProvider)</span>
+                </div>
+              
+            </div>
+        <div style="margin-top:10px">
+            <i style="font-size:17px">(Thời gian giao hàng từ 1-3 ngày tuỳ theo khu vực)</i>
+        </div>
+       
+    </div>
+</form>
+

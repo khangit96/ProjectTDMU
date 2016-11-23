@@ -5,62 +5,96 @@
     var adminList = ViewBag.adminList;
     var count = 0;
 }
-<h1 style="text-align:center">Danh Sách Người Quản Trị </h1>
-<p>
-    <a href="/admin/quan-ly-product/them-moi/">Thêm mới</a>
-</p>
-<table class="table table-bordered" style="text-align:center">
-    <tr>
-        <th style="text-align:center">
-            STT
-        </th>
-        <th style="text-align:center">
-            Username
-        </th>
-        <th style="text-align:center">
-            Password
-        </th>
-        <th style="text-align:center">
-            Vai trò
-        </th>
-        <th style="text-align:center">
-            Tuỳ chọn
-        </th>
-    </tr>
 
-    @foreach (var admin in adminList)
-    {
-        count++;
-        <tr>
-            <td>
-               @count
-            </td>
-            <td>
-                @admin.username
 
-            </td>
-            <td>
-                @admin.password
+<div class="row" style="margin-top:50px;margin-left:100px">
+    <div class="col-md-9">
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="panel-heading">QUẢN TRỊ / DANH SÁCH</div>
+                <div class="panel-body">
 
-            </td>
-            <td>
-                @if(admin.role=="1")
-                {
-                    <p>Cao nhất</p>
-                }
-                else
-                {
-                    <p>Bình thường</p>
-                }
 
-            </td>
-            <td>
-                <a href="/admin/quan-ly-product/chinh-sua/@admin.id/">Chỉnh Sửa  </a><a href="/admin/quan-ly-product/xoa/@admin.id/">Xoá</a>
+                    <div class="panel panel-success">
+                        <div class="panel panel-heading">
+                            <table class="table table-bordered" style="text-align:center">
+                                <tr>
+                                    <th style="text-align:center">
+                                        STT
+                                    </th>
+                                    <th style="text-align:center">
+                                        Username
+                                    </th>
+                                    <th style="text-align:center">
+                                        Password
+                                    </th>
+                                    <th style="text-align:center">
+                                        Vai trò
+                                    </th>
+                                    <th style="text-align:center">
+                                        Tuỳ chọn
+                                    </th>
+                                </tr>
 
-            </td>
-        </tr>
+                                @foreach (var admin in adminList)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>
+                                            @count
+                                        </td>
+                                        <td>
+                                            @admin.username
 
-    }
-</table>
+                                        </td>
+                                        <td>
+                                            @admin.password
+
+                                        </td>
+                                        <td>
+                                            @if (admin.role == "1")
+                                            {
+                                                <p>Cao nhất</p>
+                                            }
+                                            else
+                                            {
+                                                <p>Bình thường</p>
+                                            }
+
+                                        </td>
+                                        <td>
+
+                                            <div>
+                                                <a style="font-size:18px" href="/admin/quan-ly-product/chinh-sua/@admin.id/" class="glyphicon glyphicon-pencil"> </a>
+                                            </div>
+                                            <div>
+                                                <a href="/admin/quan-ly-product/xoa/@admin.id/" style="font-size:18px" class="glyphicon glyphicon-trash"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                }
+                            </table>
+                        </div> 
+                        
+                        
+                    </div>
+                    
+
+                    <div class="col-md-3" style="margin-top:130px">
+                        <a href="/admin/quan-ly-product/them-moi/" type="button" class="btn btn-info">Thêm mới</a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!--/.col-->
+
+<!--
+-->
+
+
 
 

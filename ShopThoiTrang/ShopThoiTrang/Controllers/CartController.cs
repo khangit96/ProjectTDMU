@@ -65,7 +65,7 @@ namespace ShopThoiTrang.Controllers
             db.SaveChanges();
             ViewBag.customer=customer;
             ViewBag.cartList = Session["cart"] as List<Cart>;
-            Session.Clear();
+            Session["cart"]=null;
 
             return View("Invoice");
         }

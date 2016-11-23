@@ -10,23 +10,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quản Trị Hệ Thống</title>
+    <title>Trang Quản Trị</title>
 
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet">
-    <link href="~/Content/datepicker3.css" rel="stylesheet">
-    <link href="~/Content/stylesLogin.css" rel="stylesheet">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <!--Icons-->
+    <script src="~/Content/lumino.glyphs.js"></script>
+    <link href="~/Content/stylesAdmin.css" rel="stylesheet" />
     <!--Jquery-->
     @Scripts.Render("~/bundles/jquery")
     <!--Nhúng CkEditor và Ckfinder-->
     <script src="~/Content/ckeditor/ckeditor.js"></script>
     <script src="~/Content/ckfinder/ckfinder.js"></script>
     @Scripts.Render("~/bundles/modernizr")
-    <!--Icons-->
-    <script src="~/Content/js/lumino.glyphs.js"></script>
 
 </head>
 
 <body>
+   
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -36,14 +37,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Trang Quản Trị</a>
+                <a class="navbar-brand" href="#"><span>Quản Trị</span> Hệ Thống</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>@admin.username <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>Xin chào @admin.username! <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Hồ sơ</a></li>
+                            <li><a href="#"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> Thông tin</a></li>
                             <li><a href="#"><svg class="glyph stroked gear"><use xlink:href="#stroked-gear"></use></svg> Cài đặt</a></li>
-                            <li><a href="#"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Đăng xuất</a></li>
+                            <li><a href="/admin/dang-xuat/"><svg class="glyph stroked cancel"><use xlink:href="#stroked-cancel"></use></svg> Đăng xuất</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -59,16 +60,31 @@
             </div>
         </form>
         <ul class="nav menu">
-           <p>  <a href="#" class="glyphicon glyphicon-th-large"></a><a href="/admin/quan-ly-product/"> Sản Phẩm</a></p>
-            <p> <a href="#" class="glyphicon glyphicon-th"></a><a href="/admin/quan-ly-product-category/"> Danh Mục Sản Phẩm</a></p>
-           @if(admin.role=="1")
-           {
-              <p> <a href="#" class="glyphicon glyphicon-th"></a><a href="/admin/quan-ly-admin/">Admin</a></p>
- 
-           }
+            <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg> QUẢN LÝ</a></li>
+
+                <li><a href="/admin/quan-ly-product/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>SẢN PHẨM</a></li>
+                <li><a href="/admin/quan-ly-product-category/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>DANH MỤC SẢN PHẨM</a></li>
+            <li><a href="/admin/quan-ly-hoa-don/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>HOÁ ĐƠN</a></li>
+
+            @if (admin.role == "1")
+            {
+                <li><a href="/admin/quan-ly-admin/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>ADMIN</a></li>
+
+            }
+         
+
+
+        </ul>
+        <ul class="nav menu">
+            <li class="active"><a href="#"><svg class="glyph stroked dashboard-dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>THỐNG KẾ</a></li>
+
+            <li><a href="/admin/san-pham/thong-ke/"><svg class="glyph stroked table"><use xlink:href="#stroked-table"></use></svg>TẤT CẢ SẢN PHẨM</a></li>
+           
 
             <li role="presentation" class="divider"></li>
-            <a href="#" class="glyphicon glyphicon-off"></a> <a href="/admin/dang-xuat/">Đăng Xuất</a>
+            <li><a href="/admin/dang-xuat/"><svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg> ĐĂNG XUẤT</a></li>
+
+
         </ul>
 
     </div><!--/.sidebar-->
@@ -76,28 +92,34 @@
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">
             <ol class="breadcrumb">
-                <li><a href="/" class="glyphicon glyphicon-home"></a></li>
+                <li><a href="/"><svg class="glyph stroked home"><use xlink:href="#stroked-home"></use></svg></a></li>
                 <li class="active">Trang chủ</li>
             </ol>
         </div><!--/.row-->
+        @RenderBody()
 
+    </div>	<!--/.main-->
+    <script src="~/Content/jquery-2.1.1.min.js"></script>
 
-        <div class="row">
-            <div class="col-lg-12" style="align-content:center">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-          
-                        @RenderBody();
-                    </div>
-                </div>
-            </div><!-- /.col-->
-        </div><!-- /.row -->
+    <script src="~/Content/bootstrap.min.js"></script>
+    <script>
+        $('#calendar').datepicker({
+        });
 
-    </div><!--/.main-->
-    
-    <script src="~/Content/js/jquery-1.11.1.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
-   
+        !function ($) {
+            $(document).on("click", "ul.nav li.parent > a > span.icon", function () {
+                $(this).find('em:first').toggleClass("glyphicon-minus");
+            });
+            $(".sidebar span.icon").find('em:first').addClass("glyphicon-plus");
+        }(window.jQuery);
+
+        $(window).on('resize', function () {
+            if ($(window).width() > 768) $('#sidebar-collapse').collapse('show')
+        })
+        $(window).on('resize', function () {
+            if ($(window).width() <= 767) $('#sidebar-collapse').collapse('hide')
+        })
+    </script>
 </body>
 
 </html>
